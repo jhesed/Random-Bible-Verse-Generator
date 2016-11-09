@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#093145"
+    tools:context="jsos.randomverse.MainActivity"
+    android:padding="5dp">
+
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/titleHeader"
+            android:text="God loves you!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorHeader"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp" />
+
+        <!--NIV ENGLISH-->
+
+        <TextView
+            android:id="@+id/titleEngNIV"
+            android:text=""
+            android:textColor="@color/colorText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="15dp"
+            android:textStyle="italic|bold"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/contentEngNIV"
+            android:textColor="@color/colorText"
+            android:text="Jesus knows your situation.  He knows you by name.  Come to Him and He will give you rest. If you still haven't accepted Him as your personal Lord and Savior, you may begin by saying this prayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textSize="15dp" />
+
+        <!--TAGALOG MBB-->
+
+        <TextView
+            android:id="@+id/titleFilMBB"
+            android:text="Prayer"
+            android:textColor="@color/colorText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="15dp"
+            android:textStyle="italic|bold"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/contentFilMBB"
+            android:text="Dear God, thank you because you know me.  Thank you because you died and rose again for me.  Forgive me for all my sins.  I accept You as my Lord and Savior and from now on, help me to live for You.  In Jesus name, amen."
+            android:textColor="@color/colorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingBottom="15dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textStyle="italic"
+            android:textSize="15dp" />
+
+        <Button
+            android:layout_width="101dp"
+            android:layout_height="35dp"
+            android:text="Randomize"
+            android:id="@+id/buttonRandom"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorHeader"
+            android:textColor="@color/colorAccent"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
