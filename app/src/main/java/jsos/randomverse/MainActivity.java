@@ -57,14 +57,13 @@ public class MainActivity extends AppCompatActivity {
                 // Generate random number
                 // ---------- Try arraylist ------------
 //                int max = BibleV1.versesQuery.size();
-                int max = BibleV1.VERSE_COUNT;
                 Random rand = new Random();
-                int index = rand.nextInt(max);
+                int index = rand.nextInt(BibleV1.VERSE_COUNT);
                 Log.d(TAG, "random number initial: " + index);
 
                 // Do not use previous verse
                 while (lastVerseId == index) {
-                    index = rand.nextInt() + 1;
+                    index = rand.nextInt(BibleV1.VERSE_COUNT);
                 }
                 lastVerseId = index;
 
@@ -125,6 +124,4 @@ public class MainActivity extends AppCompatActivity {
 
         dialog.show();
     }
-
-
 }
