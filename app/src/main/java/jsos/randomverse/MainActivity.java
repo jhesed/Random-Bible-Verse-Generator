@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "Clicked Random Button");
 
                 // Get ids
                 titleHeader = (TextView) findViewById(R.id.titleHeader);
@@ -57,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
                 // Generate random number
                 // ---------- Try arraylist ------------
-                int max = BibleV1.versesQuery.size();
+//                int max = BibleV1.versesQuery.size();
+                int max = BibleV1.VERSE_COUNT;
                 Random rand = new Random();
                 int index = rand.nextInt(max);
                 Log.d(TAG, "random number initial: " + index);
@@ -109,9 +109,20 @@ public class MainActivity extends AppCompatActivity {
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
-        builder.setView(inflater.inflate(R.layout.dialog_menu_about, null));
+        View layout = inflater.inflate(R.layout.dialog_menu_about, null);
+        builder.setView(layout);
+        //        builder.setNegativeButton("OK", null);
+        final AlertDialog dialog = builder.create();
 
-        AlertDialog dialog = builder.create();
+        // close dialog box on click
+        Button okButton = (Button)layout.findViewById(R.id.dialogOk);
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
         dialog.show();
     }
 

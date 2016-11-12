@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class BibleV1 {
     public static ArrayList<List> versesQuery = new ArrayList<List>();
+    public static final int VERSE_COUNT = 99;  // hardcoded for optimization. Fix this everytime
 
     public static ArrayList<List> generateQuery() {
         // JSON
