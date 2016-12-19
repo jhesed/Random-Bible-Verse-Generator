@@ -12,6 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import java.util.Random;
 
 import jsos.randomverse.bible.BibleV1;
@@ -33,11 +37,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
+//        MobileAds.initialize(getApplicationContext(), "ca-app-pub-7520090340599763/9094681938");
 //        AdView mAdView = (AdView) findViewById(R.id.adView);
 //        AdRequest adRequest = new AdRequest.Builder().build();
 //        mAdView.loadAd(adRequest);
 //    }
+        // ================== ADS ====================
+
+        try {
+            mAdView = (AdView) findViewById(R.id.adView);
+//            mAdView.setAdUnitId("ca-app-pub-7520090340599763/9094681938");
+            AdRequest.Builder adRequest = new AdRequest.Builder();
+            adRequest.addTestDevice("E0672EF9205508F55913C27654ED0CE9");
+            //                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+            //                // Check the LogCat to get your test device ID
+            //                .addTestDevice("C04B1BFFB0774708339BC273F8A43708")
+            mAdView.loadAd(adRequest.build());
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
         BibleV1.generateQuery();
 
         // Sets Random Button
@@ -123,5 +142,32 @@ public class MainActivity extends AppCompatActivity {
         });
 
         dialog.show();
+    }
+
+    /************************* ADS ******************************/
+
+    private AdView mAdView;
+    @Override
+    public void onPause() {
+        if (mAdView != null) {
+            mAdView.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mAdView != null) {
+            mAdView.resume();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
+        super.onDestroy();
     }
 }
