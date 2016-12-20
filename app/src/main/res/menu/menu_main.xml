@@ -8,4 +8,10 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         android:icon="@android:drawable/ic_menu_info_details"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/menu_verse_list"
+        android:title="@string/menu_option_more"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        app:showAsAction="ifRoom"/>
+
 </menu>
