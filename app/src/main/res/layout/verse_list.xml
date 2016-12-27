@@ -25,15 +25,31 @@
             ads:adSize="BANNER"
             ads:adUnitId="@string/banner_ad_unit_id">
         </com.google.android.gms.ads.AdView>
-
-        <ListView
-            android:id="@+id/verseList"
+        <LinearLayout android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" >
+            android:id="@+id/linearLayout">
 
-        </ListView>
+            <TextView
+                android:id="@+id/titleHeader"
+                android:text="Bible Verses:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/colorHeader"
+                android:layout_marginTop="20dp"
+                android:textSize="20dp" />
+
+            <ListView
+                android:id="@+id/verseList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true" >
+
+            </ListView>
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

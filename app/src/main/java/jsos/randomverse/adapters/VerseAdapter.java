@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import jsos.randomverse.R;
+import jsos.randomverse.VerseDetailsActivity;
 import jsos.randomverse.VerseListActivity;
 import jsos.randomverse.models.Verse;
 
@@ -74,17 +75,16 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
         // TODO: Optimize using code below! (which does not work)
 
 
-//        view.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                Verse verse = (Verse) view.getTag();
-//                Intent intent = new Intent(context, VerseListActivity.class);
-//                intent.putExtra("verseName", verse.name);
-//                intent.putExtra("verseId", verse.id);
-//                context.startActivity(intent);
-//            }
-//        });
+        view.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Verse verse = (Verse) view.getTag();
+                Intent intent = new Intent(context, VerseDetailsActivity.class);
+                intent.putExtra("verseId", verse.id);
+                context.startActivity(intent);
+            }
+        });
         return view;
     };
 

@@ -10,9 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
@@ -21,21 +19,25 @@ import com.google.android.gms.ads.MobileAds;
 
 import java.util.Random;
 
-import jsos.randomverse.adapters.VerseAdapter;
 import jsos.randomverse.bible.BibleV1;
-import jsos.randomverse.models.Verse;
 
 public class VerseDetailsActivity extends AppCompatActivity {
 
     private Button btnRandom;
-    private ListView verseListView;
-    private VerseAdapter vAdapter;
-    public static final String TAG = "VerseDetailsActivity";
+    private TextView titleHeader;
+    private TextView titleEngNIV;
+    private TextView titleFilMBB;
+    private TextView contentEngNIV;
+    private TextView contentFilMBB;
+    private static int verseId;
+
+
+    public static final String TAG = "VerseListActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verse_details);
+        setContentView(R.layout.activity_main);
 //        MobileAds.initialize(getApplicationContext(), "ca-app-pub-7520090340599763/9094681938");
 //        AdView mAdView = (AdView) findViewById(R.id.adView);
 //        AdRequest adRequest = new AdRequest.Builder().build();
@@ -56,28 +58,40 @@ public class VerseDetailsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        BibleV1.generateQuery();
+        titleHeader = (TextView) findViewById(R.id.titleHeader);
+        titleEngNIV = (TextView) findViewById(R.id.titleEngNIV);
+        titleFilMBB = (TextView) findViewById(R.id.titleFilMBB);
+        contentEngNIV = (TextView) findViewById(R.id.contentEngNIV);
+        contentFilMBB = (TextView) findViewById(R.id.contentFilMBB);
 
-        setContentView(R.layout.activity_verse_list);
-        verseListView = (ListView) findViewById(R.id.verseList);
+        verseId = getIntent().getExtras().getInt("verseId");
 
-        // This is the array adapter, it takes the context of the activity as a
-        // first parameter, the type of list view as a second parameter and your
-        // array as a third parameter.
-        if (vAdapter == null) {
-            BibleV1.generateQuery();
-            vAdapter = new VerseAdapter(this, BibleV1.versesQuery);
-            verseListView.setAdapter(vAdapter);
+        // Sets Random Button
+        btnRandom = (Button) findViewById(R.id.buttonRandom) ;
+        btnRandom.setText("Next");
+        titleEngNIV.setText("NIV");
+        titleFilMBB.setText("MBB");
 
-        }
-        else {
-            Log.d(TAG, "mAdapter not Null, refreshing");
-            vAdapter.clear();
-            vAdapter.addAll(BibleV1.versesQuery);
-            vAdapter.notifyDataSetChanged();
-        }
-        verseListView.setAdapter(vAdapter);
+        // Update value
+        titleHeader.setText(BibleV1.versesQuery.get(verseId).name);
+        contentEngNIV.setText(BibleV1.versesQuery.get(verseId).contentEnglish);
+        contentFilMBB.setText(BibleV1.versesQuery.get(verseId).contentFilipino);
 
+        btnRandom.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+            verseId += 1;
+            if (verseId > BibleV1.VERSE_COUNT) {
+                verseId = 0;  // restart to first index
+            }
+
+            titleHeader.setText(BibleV1.versesQuery.get(verseId).name);
+            contentEngNIV.setText(BibleV1.versesQuery.get(verseId).contentEnglish);
+            contentFilMBB.setText(BibleV1.versesQuery.get(verseId).contentFilipino);
+
+            }
+        });
     }
 
     @Override
@@ -95,12 +109,15 @@ public class VerseDetailsActivity extends AppCompatActivity {
 
         if (id == R.id.menu_about) {
             // Shows information dialog
+            Log.d(TAG, "Menu --> info");
             showAboutDialog();
         }
-        if (id == R.id.menu_verse_list) {
+        else if (id == R.id.menu_verse_list) {
             // Shows information dialog
-            Intent intent = new Intent(this, VerseDetailsActivity.class);
-            this.startActivity(intent);
+            Log.d(TAG, "Menu --> verse list");
+            Intent intent = new Intent(this, VerseListActivity.class);
+            startActivity(intent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
