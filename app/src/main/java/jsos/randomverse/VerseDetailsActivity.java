@@ -21,6 +21,7 @@ import com.google.android.gms.ads.MobileAds;
 
 import java.util.Random;
 
+import jsos.randomverse.adapters.VerseAdapter;
 import jsos.randomverse.bible.BibleV1;
 import jsos.randomverse.models.Verse;
 
@@ -28,12 +29,13 @@ public class VerseDetailsActivity extends AppCompatActivity {
 
     private Button btnRandom;
     private ListView verseListView;
+    private VerseAdapter vAdapter;
     public static final String TAG = "VerseDetailsActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_verse_details);
 //        MobileAds.initialize(getApplicationContext(), "ca-app-pub-7520090340599763/9094681938");
 //        AdView mAdView = (AdView) findViewById(R.id.adView);
 //        AdRequest adRequest = new AdRequest.Builder().build();
@@ -56,18 +58,25 @@ public class VerseDetailsActivity extends AppCompatActivity {
 
         BibleV1.generateQuery();
 
-        setContentView(R.layout.content_verse_list);
+        setContentView(R.layout.activity_verse_list);
         verseListView = (ListView) findViewById(R.id.verseList);
 
         // This is the array adapter, it takes the context of the activity as a
         // first parameter, the type of list view as a second parameter and your
         // array as a third parameter.
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                BibleV1.versesQuery);
+        if (vAdapter == null) {
+            BibleV1.generateQuery();
+            vAdapter = new VerseAdapter(this, BibleV1.versesQuery);
+            verseListView.setAdapter(vAdapter);
 
-        verseListView.setAdapter(arrayAdapter);
+        }
+        else {
+            Log.d(TAG, "mAdapter not Null, refreshing");
+            vAdapter.clear();
+            vAdapter.addAll(BibleV1.versesQuery);
+            vAdapter.notifyDataSetChanged();
+        }
+        verseListView.setAdapter(vAdapter);
 
     }
 

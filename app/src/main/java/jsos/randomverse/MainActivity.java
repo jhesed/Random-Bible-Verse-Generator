@@ -1,5 +1,6 @@
 package jsos.randomverse;
 
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -86,11 +87,16 @@ public class MainActivity extends AppCompatActivity {
                 }
                 lastVerseId = index;
 
-                titleHeader.setText(BibleV1.versesQuery.get(index).get(0).toString());
                 titleEngNIV.setText("NIV");
                 titleFilMBB.setText("MBB");
-                contentEngNIV.setText(BibleV1.versesQuery.get(index).get(1).toString());
-                contentFilMBB.setText(BibleV1.versesQuery.get(index).get(2).toString());
+
+//                titleHeader.setText(BibleV1.versesQuery.get(index).get(0).toString());
+//                contentEngNIV.setText(BibleV1.versesQuery.get(index).get(1).toString());
+//                contentFilMBB.setText(BibleV1.versesQuery.get(index).get(2).toString());
+                titleHeader.setText(BibleV1.versesQuery.get(index).name);
+                contentEngNIV.setText(BibleV1.versesQuery.get(index).contentEnglish);
+                contentFilMBB.setText(BibleV1.versesQuery.get(index).contentFilipino);
+
             }
         });
     }
@@ -110,7 +116,15 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.menu_about) {
             // Shows information dialog
+            Log.d(TAG, "Menu --> info");
             showAboutDialog();
+        }
+        else if (id == R.id.menu_verse_list) {
+            // Shows information dialog
+            Log.d(TAG, "Menu --> verse list");
+            Intent intent = new Intent(this, VerseListActivity.class);
+            startActivity(intent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

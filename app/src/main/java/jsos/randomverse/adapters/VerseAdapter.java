@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import jsos.randomverse.R;
-import jsos.randomverse.VerseDetailsActivity;
+import jsos.randomverse.VerseListActivity;
 import jsos.randomverse.models.Verse;
 
 public class VerseAdapter extends ArrayAdapter<Verse> {
@@ -33,7 +33,6 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
          */
 
         super(context, R.layout.activity_verse_list, verse);
-
         Log.d(TAG, "Initialization");
         this.context = context;
         this.verse = verse;
@@ -51,7 +50,7 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
         /**
          * Overrides parent for retrieving view
          * */
-
+        Log.d(TAG, "Initializing getView");
         // Initialization
         Verse verse = getItem(position);
         ViewHolder viewHolder;
@@ -65,6 +64,7 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
         //viewHolder.verseContent = (TextView) view.findViewById(R.id.verseContent);
 
         // Populate the data into the template view using the data object
+        Log.d(TAG, "VERSE NAME: " + verse.name);
         viewHolder.verseName.setText(verse.name);
         // viewHolder.verseContent.setText(verse.content);
 
@@ -73,29 +73,18 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
 
         // TODO: Optimize using code below! (which does not work)
 
-//        // New code:
-//        if (view == null) {
-//            viewHolder = new ViewHolder();
-//            // new
-////            view = LayoutInflater.from(getContext()).inflate(R.layout.activity_verse, null, true);
-//            view = LayoutInflater.from(getContext()).inflate(R.layout.activity_verse, parent, false);
-//        }
-//        else {
-//            viewHolder = (ViewHolder) view.getTag();
-//        }
 
-
-        view.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Verse verse = (Verse) view.getTag();
-                Intent intent = new Intent(context, VerseDetailsActivity.class);
-                intent.putExtra("verseName", verse.name);
-                intent.putExtra("verseId", verse.id);
-                context.startActivity(intent);
-            }
-        });
+//        view.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                Verse verse = (Verse) view.getTag();
+//                Intent intent = new Intent(context, VerseListActivity.class);
+//                intent.putExtra("verseName", verse.name);
+//                intent.putExtra("verseId", verse.id);
+//                context.startActivity(intent);
+//            }
+//        });
         return view;
     };
 

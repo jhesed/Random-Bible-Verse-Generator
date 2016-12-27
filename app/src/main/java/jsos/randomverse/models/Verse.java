@@ -6,11 +6,13 @@ package jsos.randomverse.models;
 public class Verse {
     public int id;
     public String name;
-    public String content;
+    public String contentEnglish;
+    public String contentFilipino;
 
-    public Verse(int id, String verse, String content) {
+    public Verse(int id, String verse, String contentEnglish, String contentFilipino) {
         this.id = id;  // index in array
         this.name = verse;
-        this.content = content;
+        this.contentEnglish = contentEnglish;
+        this.contentFilipino = contentFilipino;
     }
 }
