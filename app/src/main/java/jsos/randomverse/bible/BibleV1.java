@@ -11,6 +11,7 @@ import jsos.randomverse.models.Verse;
 public class BibleV1 {
     public static ArrayList<Verse> versesQuery = new ArrayList<Verse>();
     public static final int VERSE_COUNT = 99;  // hardcoded for optimization. Fix this everytime
+    public static final double VERSION = 1.0;  // support for future updates
 
     public static ArrayList<Verse> generateQuery() {
         // JSON
