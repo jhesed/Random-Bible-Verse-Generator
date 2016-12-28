@@ -1,3 +1,10 @@
+/***
+ * VerseDetailsActivity.java: Displays details (i.e. NIV and MBB content)
+ *                            of a specific Bible Verse
+ * @Author: Jhesed Tacadena
+ * @Date: November 2016
+ * */
+
 package jsos.randomverse;
 
 import android.content.Intent;
@@ -16,44 +23,34 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-
-import java.util.Random;
 
 import jsos.randomverse.bible.BibleV1;
 
 public class VerseDetailsActivity extends AppCompatActivity {
 
-    private Button btnRandom;
+    /* SECTION: Variable Declarations */
+
+    private Button btnPrev;
+    private Button btnNext;
     private TextView titleHeader;
     private TextView titleEngNIV;
     private TextView titleFilMBB;
     private TextView contentEngNIV;
     private TextView contentFilMBB;
     private static int verseId;
-
-
-    public static final String TAG = "VerseListActivity";
+    public static final String TAG = "VerseDetailsActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        MobileAds.initialize(getApplicationContext(), "ca-app-pub-7520090340599763/9094681938");
-//        AdView mAdView = (AdView) findViewById(R.id.adView);
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        mAdView.loadAd(adRequest);
-//    }
-        // ================== ADS ====================
+
+        /* SECTION: ADS */
 
         try {
             mAdView = (AdView) findViewById(R.id.adView);
-//            mAdView.setAdUnitId("ca-app-pub-7520090340599763/9094681938");
             AdRequest.Builder adRequest = new AdRequest.Builder();
             adRequest.addTestDevice("E0672EF9205508F55913C27654ED0CE9");
-            //                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-            //                // Check the LogCat to get your test device ID
-            //                .addTestDevice("C04B1BFFB0774708339BC273F8A43708")
             mAdView.loadAd(adRequest.build());
         } catch(Exception e) {
             e.printStackTrace();
@@ -69,38 +66,49 @@ public class VerseDetailsActivity extends AppCompatActivity {
         menuHome.setVisibility(View.VISIBLE);
         menuList.setVisibility(View.GONE);
 
+        // Retrieve view objects
         titleHeader = (TextView) findViewById(R.id.titleHeader);
         titleEngNIV = (TextView) findViewById(R.id.titleEngNIV);
         titleFilMBB = (TextView) findViewById(R.id.titleFilMBB);
         contentEngNIV = (TextView) findViewById(R.id.contentEngNIV);
         contentFilMBB = (TextView) findViewById(R.id.contentFilMBB);
 
+        // Retrieve information passed from VerseListActivity class
         verseId = getIntent().getExtras().getInt("verseId");
 
-        // Sets Random Button
-        btnRandom = (Button) findViewById(R.id.buttonRandom) ;
-        btnRandom.setText("Next");
+        // Update views
+        btnNext = (Button) findViewById(R.id.buttonRandom) ;
         titleEngNIV.setText("NIV");
         titleFilMBB.setText("MBB");
-
-        // Update value
         titleHeader.setText(BibleV1.versesQuery.get(verseId).name);
         contentEngNIV.setText(BibleV1.versesQuery.get(verseId).contentEnglish);
         contentFilMBB.setText(BibleV1.versesQuery.get(verseId).contentFilipino);
 
-        btnRandom.setOnClickListener(new View.OnClickListener() {
+        /* SECTION: Button events */
+        btnPrev.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-            verseId += 1;
-            if (verseId > BibleV1.VERSE_COUNT) {
-                verseId = 0;  // restart to first index
+            verseId -= 1;
+            if (verseId < 0) {
+                verseId = BibleV1.VERSE_COUNT;  // restart to first index
             }
-
             titleHeader.setText(BibleV1.versesQuery.get(verseId).name);
             contentEngNIV.setText(BibleV1.versesQuery.get(verseId).contentEnglish);
             contentFilMBB.setText(BibleV1.versesQuery.get(verseId).contentFilipino);
+            }
+        });
+        btnNext.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View view) {
+                verseId += 1;
+                if (verseId > BibleV1.VERSE_COUNT) {
+                    verseId = 0;  // restart to first index
+                }
+                titleHeader.setText(BibleV1.versesQuery.get(verseId).name);
+                contentEngNIV.setText(BibleV1.versesQuery.get(verseId).contentEnglish);
+                contentFilMBB.setText(BibleV1.versesQuery.get(verseId).contentFilipino);
             }
         });
     }

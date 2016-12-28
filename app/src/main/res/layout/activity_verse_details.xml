@@ -13,7 +13,7 @@
     <LinearLayout android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/activity_verse_details">
+        android:id="@+id/main_content">
 
         <!-- ADMOBS -->
         <com.google.android.gms.ads.AdView
@@ -94,6 +94,29 @@
                 android:paddingRight="5dp"
                 android:textStyle="italic"
                 android:textSize="15dp" />
+
+            <Button
+                android:layout_width="101dp"
+                android:layout_height="35dp"
+                android:text="PREV"
+                android:id="@+id/buttonPrev"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorHeader"
+                android:textColor="@color/colorAccent"
+                android:layout_gravity="center" />
+
+            <Button
+                android:layout_width="101dp"
+                android:layout_height="35dp"
+                android:text="NEXT"
+                android:id="@+id/buttonNext"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorHeader"
+                android:textColor="@color/colorAccent"
+                android:layout_gravity="center" />
+
 
         </LinearLayout>
     </LinearLayout>

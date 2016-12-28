@@ -1,3 +1,9 @@
+/***
+* MainActivity.java: Displays the Main page for randomizing Bible verses
+* @Author: Jhesed Tacadena
+* @Date: November 2016
+* */
+
 package jsos.randomverse;
 
 import android.content.Intent;
@@ -16,13 +22,13 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-
 import java.util.Random;
 
 import jsos.randomverse.bible.BibleV1;
 
 public class MainActivity extends AppCompatActivity {
+
+    /* SECTION:  Variable Declarations */
 
     private Button btnRandom;
     private TextView titleHeader;
@@ -30,30 +36,20 @@ public class MainActivity extends AppCompatActivity {
     private TextView titleFilMBB;
     private TextView contentEngNIV;
     private TextView contentFilMBB;
-
     private int lastVerseId = -1;
-
     public static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        MobileAds.initialize(getApplicationContext(), "ca-app-pub-7520090340599763/9094681938");
-//        AdView mAdView = (AdView) findViewById(R.id.adView);
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        mAdView.loadAd(adRequest);
-//    }
-        // ================== ADS ====================
+
+        /* SECTION: ADS */
 
         try {
             mAdView = (AdView) findViewById(R.id.adView);
-//            mAdView.setAdUnitId("ca-app-pub-7520090340599763/9094681938");
             AdRequest.Builder adRequest = new AdRequest.Builder();
             adRequest.addTestDevice("E0672EF9205508F55913C27654ED0CE9");
-            //                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-            //                // Check the LogCat to get your test device ID
-            //                .addTestDevice("C04B1BFFB0774708339BC273F8A43708")
             mAdView.loadAd(adRequest.build());
         } catch(Exception e) {
             e.printStackTrace();
@@ -69,26 +65,27 @@ public class MainActivity extends AppCompatActivity {
         menuHome.setVisibility(View.GONE);
         menuList.setVisibility(View.VISIBLE);
 
-
+        // Generate the Bible Verses
         BibleV1.generateQuery();
 
         // Sets Random Button
         btnRandom = (Button) findViewById(R.id.buttonRandom) ;
+
+        /* SECTION: Events */
+
         btnRandom.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
-                // Get ids
+                // Get View Ids
                 titleHeader = (TextView) findViewById(R.id.titleHeader);
                 titleEngNIV = (TextView) findViewById(R.id.titleEngNIV);
                 titleFilMBB = (TextView) findViewById(R.id.titleFilMBB);
                 contentEngNIV = (TextView) findViewById(R.id.contentEngNIV);
                 contentFilMBB = (TextView) findViewById(R.id.contentFilMBB);
 
-                // Generate random number
-                // ---------- Try arraylist ------------
-//                int max = BibleV1.versesQuery.size();
+                // Generate random number for random Bible verse
                 Random rand = new Random();
                 int index = rand.nextInt(BibleV1.VERSE_COUNT);
                 Log.d(TAG, "random number initial: " + index);
@@ -99,16 +96,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 lastVerseId = index;
 
+                // Update the view with the new Bible Verse
                 titleEngNIV.setText("NIV");
                 titleFilMBB.setText("MBB");
-
-//                titleHeader.setText(BibleV1.versesQuery.get(index).get(0).toString());
-//                contentEngNIV.setText(BibleV1.versesQuery.get(index).get(1).toString());
-//                contentFilMBB.setText(BibleV1.versesQuery.get(index).get(2).toString());
                 titleHeader.setText(BibleV1.versesQuery.get(index).name);
                 contentEngNIV.setText(BibleV1.versesQuery.get(index).contentEnglish);
                 contentFilMBB.setText(BibleV1.versesQuery.get(index).contentFilipino);
-
             }
         });
     }
