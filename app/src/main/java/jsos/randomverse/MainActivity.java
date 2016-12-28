@@ -59,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        // Set icon in action bar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
+
         // Update the menu
         ImageView menuHome = (ImageView)findViewById(R.id.menu_home);
         ImageView menuList = (ImageView)findViewById(R.id.menu_verse_list);

@@ -57,6 +57,10 @@ public class VerseListActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        // Set icon in action bar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
+
 //        BibleV1.generateQuery();
 
         // Update the menu
