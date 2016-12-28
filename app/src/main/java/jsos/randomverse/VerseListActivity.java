@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -56,7 +57,13 @@ public class VerseListActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        BibleV1.generateQuery();
+//        BibleV1.generateQuery();
+
+        // Update the menu
+        ImageView menuHome = (ImageView)findViewById(R.id.menu_home);
+        ImageView menuList = (ImageView)findViewById(R.id.menu_verse_list);
+        menuHome.setVisibility(View.VISIBLE);
+        menuList.setVisibility(View.GONE);
 
 //        setContentView(R.layout.activity_verse_list);
         verseListView = (ListView) findViewById(R.id.verseList);
@@ -100,6 +107,11 @@ public class VerseListActivity extends AppCompatActivity {
         else if (id == R.id.menu_verse_list) {
             // Shows information dialog
             Intent intent = new Intent(this, VerseListActivity.class);
+            this.startActivity(intent);
+        }
+        else if (id == R.id.menu_home) {
+            // Shows information dialog
+            Intent intent = new Intent(this, MainActivity.class);
             this.startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

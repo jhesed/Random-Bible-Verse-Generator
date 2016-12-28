@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
@@ -57,6 +58,13 @@ public class MainActivity extends AppCompatActivity {
         } catch(Exception e) {
             e.printStackTrace();
         }
+
+        // Update the menu
+        ImageView menuHome = (ImageView)findViewById(R.id.menu_home);
+        ImageView menuList = (ImageView)findViewById(R.id.menu_verse_list);
+        menuHome.setVisibility(View.GONE);
+        menuList.setVisibility(View.VISIBLE);
+
 
         BibleV1.generateQuery();
 

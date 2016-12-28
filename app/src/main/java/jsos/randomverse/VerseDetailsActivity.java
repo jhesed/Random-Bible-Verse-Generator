@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
@@ -57,6 +58,12 @@ public class VerseDetailsActivity extends AppCompatActivity {
         } catch(Exception e) {
             e.printStackTrace();
         }
+
+        // Update the menu
+        ImageView menuHome = (ImageView)findViewById(R.id.menu_home);
+        ImageView menuList = (ImageView)findViewById(R.id.menu_verse_list);
+        menuHome.setVisibility(View.VISIBLE);
+        menuList.setVisibility(View.GONE);
 
         titleHeader = (TextView) findViewById(R.id.titleHeader);
         titleEngNIV = (TextView) findViewById(R.id.titleEngNIV);
@@ -118,6 +125,11 @@ public class VerseDetailsActivity extends AppCompatActivity {
             Intent intent = new Intent(this, VerseListActivity.class);
             startActivity(intent);
             return true;
+        }
+        else if (id == R.id.menu_home) {
+            // Shows information dialog
+            Intent intent = new Intent(this, MainActivity.class);
+            this.startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
