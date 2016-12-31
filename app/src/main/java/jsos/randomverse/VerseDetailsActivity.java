@@ -38,8 +38,8 @@ public class VerseDetailsActivity extends AppCompatActivity {
     private TextView contentEngNIV;
     private TextView contentFilMBB;
     private static int verseId;
-    Menu menu;
-    public static final String TAG = "VerseDetailsActivity";
+    private Menu menu;
+    private static final String TAG = "VerseDetailsActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

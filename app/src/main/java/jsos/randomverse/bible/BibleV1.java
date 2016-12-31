@@ -9,7 +9,7 @@ import jsos.randomverse.models.Verse;
  * A class that holds the Bible verses to be shown on the user
  */
 public class BibleV1 {
-    public static ArrayList<Verse> versesQuery = new ArrayList<Verse>();
+    public final static ArrayList<Verse> versesQuery = new ArrayList<Verse>();
     public static final int VERSE_COUNT = 98;  // hardcoded for optimization. Fix this everytime
     public static final double VERSION = 1.0;  // support for future updates
 

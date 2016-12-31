@@ -34,7 +34,7 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
         Log.d(TAG, "Initialization");
         this.context = context;
         this.verse = verse;
-        this.viewHolder = new ViewHolder();
+        viewHolder = new ViewHolder();
     }
 
     private static class ViewHolder {
@@ -87,13 +87,5 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
             }
         });
         return view;
-    }
-
-    public Verse get(int position) {
-        /**
-         * Retrieves verse object based on ArrayList of verses
-         * @param position: Index position to be retrieved
-         * */
-        return verse.get(position);
     }
 }
