@@ -5,17 +5,13 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_verse_list"
         android:title="@string/menu_option_more"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="collapseActionView"/>
     <item
         android:id="@+id/menu_home"
         android:title="@string/menu_home"
-        android:icon="@drawable/ic_home"
-        app:showAsAction="ifRoom"
-        android:visibility="gone"/>
+        app:showAsAction="collapseActionView"/>
     <item
         android:id="@+id/menu_about"
         android:title="@string/about"
-        android:icon="@android:drawable/ic_menu_info_details"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="collapseActionView"/>
 </menu>

@@ -38,12 +38,13 @@ public class VerseDetailsActivity extends AppCompatActivity {
     private TextView contentEngNIV;
     private TextView contentFilMBB;
     private static int verseId;
+    Menu menu;
     public static final String TAG = "VerseDetailsActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_verse_details);
 
         /* SECTION: ADS */
 
@@ -60,12 +61,6 @@ public class VerseDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
-        // Update the menu
-        ImageView menuHome = (ImageView)findViewById(R.id.menu_home);
-        ImageView menuList = (ImageView)findViewById(R.id.menu_verse_list);
-        menuHome.setVisibility(View.VISIBLE);
-        menuList.setVisibility(View.GONE);
-
         // Retrieve view objects
         titleHeader = (TextView) findViewById(R.id.titleHeader);
         titleEngNIV = (TextView) findViewById(R.id.titleEngNIV);
@@ -77,9 +72,10 @@ public class VerseDetailsActivity extends AppCompatActivity {
         verseId = getIntent().getExtras().getInt("verseId");
 
         // Update views
-        btnNext = (Button) findViewById(R.id.buttonRandom) ;
-        titleEngNIV.setText("NIV");
-        titleFilMBB.setText("MBB");
+        btnPrev = (Button) findViewById(R.id.buttonPrev) ;
+        btnNext = (Button) findViewById(R.id.buttonNext) ;
+        titleEngNIV.setText(R.string.NIV_title);
+        titleFilMBB.setText(R.string.MBB_title);
         titleHeader.setText(BibleV1.versesQuery.get(verseId).name);
         contentEngNIV.setText(BibleV1.versesQuery.get(verseId).contentEnglish);
         contentFilMBB.setText(BibleV1.versesQuery.get(verseId).contentFilipino);
@@ -118,6 +114,14 @@ public class VerseDetailsActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
+        this.menu = menu;
+
+        // Update the menu
+        invalidateOptionsMenu();
+        MenuItem menuHome = menu.findItem(R.id.menu_home);
+        MenuItem menuList = menu.findItem(R.id.menu_verse_list);
+        menuHome.setVisible(true);
+        menuList.setVisible(false);
         return true;
     }
 

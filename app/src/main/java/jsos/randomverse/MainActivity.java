@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.menu.MenuView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView titleFilMBB;
     private TextView contentEngNIV;
     private TextView contentFilMBB;
+    Menu menu;
     private int lastVerseId = -1;
     public static final String TAG = "MainActivity";
 
@@ -58,12 +60,6 @@ public class MainActivity extends AppCompatActivity {
         // Set icon in action bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-
-        // Update the menu
-        ImageView menuHome = (ImageView)findViewById(R.id.menu_home);
-        ImageView menuList = (ImageView)findViewById(R.id.menu_verse_list);
-        menuHome.setVisibility(View.GONE);
-        menuList.setVisibility(View.VISIBLE);
 
         // Generate the Bible Verses
         BibleV1.generateQuery();
@@ -97,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
                 lastVerseId = index;
 
                 // Update the view with the new Bible Verse
-                titleEngNIV.setText("NIV");
-                titleFilMBB.setText("MBB");
+                titleEngNIV.setText(R.string.NIV_title);
+                titleFilMBB.setText(R.string.MBB_title);
                 titleHeader.setText(BibleV1.versesQuery.get(index).name);
                 contentEngNIV.setText(BibleV1.versesQuery.get(index).contentEnglish);
                 contentFilMBB.setText(BibleV1.versesQuery.get(index).contentFilipino);
@@ -111,6 +107,15 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
+        this.menu = menu;
+
+        // Update the menu
+        invalidateOptionsMenu();
+        MenuItem menuHome = menu.findItem(R.id.menu_home);
+        MenuItem menuList = menu.findItem(R.id.menu_verse_list);
+        menuHome.setVisible(false);
+        menuList.setVisible(true);
+
         return true;
     }
 

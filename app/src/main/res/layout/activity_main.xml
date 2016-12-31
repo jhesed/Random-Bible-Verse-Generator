@@ -20,8 +20,6 @@
                 android:id="@+id/adView"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
                 ads:adSize="BANNER"
                 ads:adUnitId="@string/banner_ad_unit_id">
             </com.google.android.gms.ads.AdView>
@@ -32,13 +30,13 @@
                 android:id="@+id/linearLayout">
                 <TextView
                     android:id="@+id/titleHeader"
-                    android:text="God loves you!"
+                    android:text="@string/god_loves_you"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textColor="@color/colorHeader"
                     android:layout_marginTop="20dp"
-                    android:textSize="20dp" />
+                    android:textSize="20sp" />
 
                 <!--NIV ENGLISH-->
 
@@ -52,12 +50,12 @@
                     android:gravity="center"
                     android:paddingTop="15dp"
                     android:textStyle="italic|bold"
-                    android:textSize="17dp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/contentEngNIV"
                     android:textColor="@color/colorText"
-                    android:text="Jesus knows your situation.  He knows you by name.  Come to Him and He will give you rest. If you still haven't accepted Him as your personal Lord and Savior, you may begin by saying this prayer"
+                    android:text="@string/declaration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -65,13 +63,13 @@
                     android:textStyle="italic"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
 
                 <!--TAGALOG MBB-->
 
                 <TextView
                     android:id="@+id/titleFilMBB"
-                    android:text="Prayer"
+                    android:text="@string/prayer"
                     android:textColor="@color/colorText"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -79,11 +77,11 @@
                     android:gravity="center"
                     android:paddingTop="15dp"
                     android:textStyle="italic|bold"
-                    android:textSize="17dp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/contentFilMBB"
-                    android:text="Dear God, thank you because you know me.  Thank you because you died and rose again for me.  Forgive me for all my sins.  I accept You as my Lord and Savior and from now on, help me to live for You.  In Jesus name, amen."
+                    android:text="@string/prayer_content"
                     android:textColor="@color/colorText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -93,15 +91,13 @@
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:textStyle="italic"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
 
                 <Button
                     android:layout_width="101dp"
                     android:layout_height="35dp"
-                    android:text="Randomize"
+                    android:text="@string/randomize"
                     android:id="@+id/buttonRandom"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
                     android:background="@color/colorHeader"
                     android:textColor="@color/colorAccent"
                     android:layout_gravity="center" />

@@ -22,19 +22,18 @@
             android:id="@+id/iconInfoDialog"
             android:src="@android:drawable/ic_dialog_info"
             android:layout_gravity="center"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/info_dialog"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="47dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="About"
+            android:text="@string/about_title"
             android:id="@+id/dialogTitle"
             android:layout_gravity="center"
             android:gravity="center|fill_vertical"
-            android:autoText="true"
-            android:capitalize="words"
             android:clickable="false"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary" />
@@ -54,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Are you looking for a Church to grow your faith?  Feel free to attend our Worship Service.  For detailed information, you may visit www.jsoscc.com/contact-us"
+            android:text="@string/church_invitation"
             android:textColor="@color/colorPrimary"
             android:layout_gravity="center"
             android:gravity="center"
@@ -91,25 +90,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:weightSum="1"
+                android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Developer:"
+                    android:text="@string/developer_title"
                     android:textColor="@color/colorAccent"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Email:"
+                    android:text="@string/email_title"
                     android:textColor="@color/colorAccent"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Website:"
+                    android:text="@string/website_title"
                     android:textColor="@color/colorAccent"/>
 
             </LinearLayout>
@@ -121,6 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:weightSum="1"
+                android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp">
 
                 <LinearLayout
@@ -133,19 +134,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Jhesed D. Tacadena"
+                        android:text="@string/dev_name"
                         android:textColor="@color/colorAccent"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="jhesed.tacadena@gmail.com"
+                        android:text="@string/dev_email"
                         android:textColor="@color/colorAccent"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="www.jhss.com"
+                        android:text="@string/dev_website"
                         android:textColor="@color/colorAccent"/>
 
                 </LinearLayout>
@@ -176,7 +177,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Feel free to contact me for mistyped Bible verses, bug reports, donations, or sideline projects.  God bless you!"
+                android:text="@string/bug_report"
                 android:textColor="@color/colorPrimary"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -199,7 +200,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="OK"
+            android:text="@string/ok_text"
             android:background="@color/colorHeader"
             android:textColor="@color/colorPrimary"
             android:textAppearance="?android:attr/textAppearanceLarge"

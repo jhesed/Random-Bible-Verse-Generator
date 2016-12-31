@@ -32,6 +32,7 @@ public class VerseListActivity extends AppCompatActivity {
 
     private ListView verseListView;
     private VerseAdapter vAdapter;
+    Menu menu;
     public static final String TAG = "VerseListActivity";
 
     @Override
@@ -53,12 +54,6 @@ public class VerseListActivity extends AppCompatActivity {
         // Set icon in action bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-
-        // Update the menu
-        ImageView menuHome = (ImageView)findViewById(R.id.menu_home);
-        ImageView menuList = (ImageView)findViewById(R.id.menu_verse_list);
-        menuHome.setVisibility(View.VISIBLE);
-        menuList.setVisibility(View.GONE);
 
         verseListView = (ListView) findViewById(R.id.verseList);
 
@@ -83,6 +78,14 @@ public class VerseListActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
+        this.menu = menu;
+
+        // Update the menu
+        invalidateOptionsMenu();
+        MenuItem menuHome = menu.findItem(R.id.menu_home);
+        MenuItem menuList = menu.findItem(R.id.menu_verse_list);
+        menuHome.setVisible(true);
+        menuList.setVisible(false);
         return true;
     }
 

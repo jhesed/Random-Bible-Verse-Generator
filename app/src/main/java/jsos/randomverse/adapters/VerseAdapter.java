@@ -50,9 +50,14 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
 
         Log.d(TAG, "Initializing getView");
         Verse verse = getItem(position);
-        ViewHolder viewHolder;
-        viewHolder = new ViewHolder();
-        view = LayoutInflater.from(getContext()).inflate(R.layout.activity_verse_list, null, true);
+        ViewHolder viewHolder = new ViewHolder();
+
+//        if (view == null) {
+            view = LayoutInflater.from(getContext()).inflate(R.layout.activity_verse_list, null, true);
+//        }
+//        else {
+//            viewHolder = (ViewHolder)view.getTag();
+//        }
 
         Log.d(TAG, "Retrieved verse: " + verse.name);
 
@@ -81,7 +86,7 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
             }
         });
         return view;
-    };
+    }
 
     public Verse get(int position) {
         /**
