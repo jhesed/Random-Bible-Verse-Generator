@@ -121,7 +121,7 @@ public class VerseDetailsActivity extends AppCompatActivity {
         MenuItem menuHome = menu.findItem(R.id.menu_home);
         MenuItem menuList = menu.findItem(R.id.menu_verse_list);
         menuHome.setVisible(true);
-        menuList.setVisible(false);
+        menuList.setVisible(true);
         return true;
     }
 
