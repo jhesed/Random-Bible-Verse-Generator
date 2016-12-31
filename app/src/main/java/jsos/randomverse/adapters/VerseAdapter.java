@@ -27,18 +27,21 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
     private final String TAG = "verseListAdapter";
     private final Context context;
     private final ArrayList<Verse> verse;
+    private static ViewHolder viewHolder;
 
     public VerseAdapter(Context context, ArrayList<Verse> verse) {
         super(context, R.layout.activity_verse_list, verse);
         Log.d(TAG, "Initialization");
         this.context = context;
         this.verse = verse;
+        this.viewHolder = new ViewHolder();
     }
 
     private static class ViewHolder {
         /**
          * Private class for recyclable information
          * */
+        int verseId;
         TextView verseName;
         // TextView verseContent;
     }
@@ -50,27 +53,26 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
 
         Log.d(TAG, "Initializing getView");
         Verse verse = getItem(position);
-        ViewHolder viewHolder = new ViewHolder();
 
-//        if (view == null) {
+        if (view == null) {
             view = LayoutInflater.from(getContext()).inflate(R.layout.activity_verse_list, null, true);
-//        }
-//        else {
-//            viewHolder = (ViewHolder)view.getTag();
-//        }
+        }
+        else {
+            viewHolder = (ViewHolder)view.getTag();
+        }
 
         Log.d(TAG, "Retrieved verse: " + verse.name);
 
         // Lookup view for data population
+        viewHolder.verseId = verse.id;
         viewHolder.verseName = (TextView) view.findViewById(R.id.verseItem);
-        //viewHolder.verseContent = (TextView) view.findViewById(R.id.verseContent);
 
         // Populate the data into the template view using the data object
         Log.d(TAG, "VERSE NAME: " + verse.name);
         viewHolder.verseName.setText(verse.name);
         // viewHolder.verseContent.setText(verse.content);
 
-        view.setTag(verse);
+        view.setTag(viewHolder);
         view.setLongClickable(true);
 
         /* SECTION : Events */
@@ -79,9 +81,8 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
 
             @Override
             public void onClick(View view) {
-                Verse verse = (Verse) view.getTag();
                 Intent intent = new Intent(context, VerseDetailsActivity.class);
-                intent.putExtra("verseId", verse.id);
+                intent.putExtra("verseId", viewHolder.verseId);
                 context.startActivity(intent);
             }
         });
