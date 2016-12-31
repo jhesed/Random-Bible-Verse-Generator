@@ -64,12 +64,12 @@ public class VerseListActivity extends AppCompatActivity {
             vAdapter = new VerseAdapter(this, BibleV1.versesQuery);
             verseListView.setAdapter(vAdapter);
         }
-        else {
-            Log.d(TAG, "vAdapter not Null, refreshing");
-            vAdapter.clear();
-            vAdapter.addAll(BibleV1.versesQuery);
-            vAdapter.notifyDataSetChanged();
-        }
+//        else {
+//            Log.d(TAG, "vAdapter not Null, refreshing");
+//            vAdapter.clear();
+//            vAdapter.addAll(BibleV1.versesQuery);
+//            vAdapter.notifyDataSetChanged();
+//        }
         verseListView.setAdapter(vAdapter);
     }
 
