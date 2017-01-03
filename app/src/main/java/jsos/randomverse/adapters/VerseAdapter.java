@@ -8,7 +8,6 @@ package jsos.randomverse.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +30,6 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
 
     public VerseAdapter(Context context, ArrayList<Verse> verse) {
         super(context, R.layout.activity_verse_list, verse);
-        Log.d(TAG, "Initialization");
         this.context = context;
         this.verse = verse;
         viewHolder = new ViewHolder();
@@ -51,7 +49,6 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
          * Overrides parent for retrieving view
          * */
 
-        Log.d(TAG, "Initializing getView");
         Verse verse = getItem(position);
 
         if (view == null) {
@@ -61,14 +58,11 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
             viewHolder = (ViewHolder)view.getTag();
         }
 
-        Log.d(TAG, "Retrieved verse: " + verse.name);
-
         // Lookup view for data population
         viewHolder.verseId = verse.id;
         viewHolder.verseName = (TextView) view.findViewById(R.id.verseItem);
 
         // Populate the data into the template view using the data object
-        Log.d(TAG, "VERSE NAME: " + verse.name);
         viewHolder.verseName.setText(verse.name);
         // viewHolder.verseContent.setText(verse.content);
 

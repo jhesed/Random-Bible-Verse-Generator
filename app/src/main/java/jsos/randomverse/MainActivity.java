@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -83,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
                 // Generate random number for random Bible verse
                 Random rand = new Random();
                 int index = rand.nextInt(BibleV1.VERSE_COUNT);
-                Log.d(TAG, "random number initial: " + index);
 
                 // Do not use previous verse
                 while (lastVerseId == index) {
@@ -125,12 +123,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.menu_about) {
             // Shows information dialog
-            Log.d(TAG, "Menu --> info");
             showAboutDialog();
         }
         else if (id == R.id.menu_verse_list) {
             // Shows information dialog
-            Log.d(TAG, "Menu --> verse list");
             Intent intent = new Intent(this, VerseListActivity.class);
             startActivity(intent);
             return true;

@@ -2,7 +2,6 @@
 
 buildscript {
     repositories {
-//        jcenter()
         jcenter({url "http://jcenter.bintray.com/"})
         mavenCentral()
     }
@@ -17,18 +16,10 @@ buildscript {
 
 allprojects {
     repositories {
-//        jcenter()
         jcenter({url "http://jcenter.bintray.com/"})
         mavenCentral()
     }
 }
-//android {
-//    buildTypes {
-//        debug {
-//            debuggable true
-//        }
-//    }
-//}
 
 task clean(type: Delete) {
     delete rootProject.buildDir

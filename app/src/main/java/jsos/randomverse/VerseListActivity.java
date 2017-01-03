@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -59,7 +58,6 @@ public class VerseListActivity extends AppCompatActivity {
         // This is the array adapter, it takes the context of the activity as a
         // first parameter, the type of list view as a second parameter
         if (vAdapter == null) {
-            Log.d(TAG, "vAdapter is null, instantiating");
             vAdapter = new VerseAdapter(this, BibleV1.versesQuery);
             verseListView.setAdapter(vAdapter);
         }

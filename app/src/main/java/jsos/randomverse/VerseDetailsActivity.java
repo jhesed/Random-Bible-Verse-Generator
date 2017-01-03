@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -131,12 +130,10 @@ public class VerseDetailsActivity extends AppCompatActivity {
 
         if (id == R.id.menu_about) {
             // Shows information dialog
-            Log.d(TAG, "Menu --> info");
             showAboutDialog();
         }
         else if (id == R.id.menu_verse_list) {
             // Shows information dialog
-            Log.d(TAG, "Menu --> verse list");
             Intent intent = new Intent(this, VerseListActivity.class);
             startActivity(intent);
             return true;
