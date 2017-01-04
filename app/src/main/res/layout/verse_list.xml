@@ -11,19 +11,9 @@
     tools:context="com.jjh.randomverse.VerseListActivity"
     android:padding="5dp">
 
-        <!-- ADMOBS -->
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/adView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/banner_ad_unit_id"
-            android:layout_alignParentBottom="true">
-        </com.google.android.gms.ads.AdView>
-
     <LinearLayout android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/linearLayout"
         android:layout_above="@id/adView">
 
@@ -45,5 +35,15 @@
 
         </ListView>
     </LinearLayout>
+
+    <!-- ADMOBS -->
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"
+        android:layout_alignParentBottom="true">
+    </com.google.android.gms.ads.AdView>
 
 </RelativeLayout>
