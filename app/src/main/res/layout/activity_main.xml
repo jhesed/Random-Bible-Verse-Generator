@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="#093145"
-    tools:context="jsos.randomverse.MainActivity"
+    tools:context="com.jjh.randomverse.MainActivity"
     android:padding="5dp">
 
     <LinearLayout android:orientation="vertical"
@@ -20,7 +20,7 @@
                 android:id="@+id/adView"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                ads:adSize="BANNER"
+                ads:adSize="SMART_BANNER"
                 ads:adUnitId="@string/banner_ad_unit_id">
             </com.google.android.gms.ads.AdView>
 
