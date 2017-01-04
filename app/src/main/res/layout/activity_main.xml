@@ -1,35 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:orientation="vertical"
     android:background="#093145"
     tools:context="com.jjh.randomverse.MainActivity"
     android:padding="5dp">
 
-    <RelativeLayout android:orientation="vertical"
+    <ScrollView android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/main_content">
-
-        <!-- ADMOBS -->
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/adView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/banner_ad_unit_id"
-            android:layout_alignParentBottom="true">
-        </com.google.android.gms.ads.AdView>
+        android:layout_height="wrap_content"
+        android:id="@+id/main_content"
+        android:layout_above="@+id/adView"
+        android:layout_alignParentTop="true">
 
             <LinearLayout android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/linearLayout"
-                android:layout_above="@id/adView">
+                android:id="@+id/linearLayout">
                 <TextView
                     android:id="@+id/titleHeader"
                     android:text="@string/god_loves_you"
@@ -105,5 +97,16 @@
                     android:layout_gravity="center" />
 
             </LinearLayout>
-        </RelativeLayout>
-</ScrollView>
+        </ScrollView>
+
+    <!-- ADMOBS -->
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"
+        android:layout_alignParentBottom="true">
+    </com.google.android.gms.ads.AdView>
+
+</RelativeLayout>
