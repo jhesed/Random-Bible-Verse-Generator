@@ -1,8 +1,8 @@
-package jsos.randomverse.bible;
+package com.jjh.randomverse.bible;
 
 import java.util.ArrayList;
 
-import jsos.randomverse.models.Verse;
+import com.jjh.randomverse.models.Verse;
 
 /**
  * Created by JHESE154 on 8/24/2016.
