@@ -5,7 +5,7 @@ android {
     buildToolsVersion "24.0.3"
 
     defaultConfig {
-        applicationId "com.jjh.randomverse"
+        applicationId "com.jsos.randomverse2"
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1

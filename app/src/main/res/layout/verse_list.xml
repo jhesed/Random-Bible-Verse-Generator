@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="#093145"
-    tools:context="com.jjh.randomverse.VerseListActivity"
+    tools:context="com.jsos.randomverse2.VerseListActivity"
     android:padding="5dp">
 
     <LinearLayout android:orientation="vertical"

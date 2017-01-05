@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:823244995385:android:a04a69f82c4792cd",
+        "mobilesdk_app_id": "1:823244995385:android:6bd3ff9118786f91",
         "android_client_info": {
-          "package_name": "com.jjh.randomverse"
+          "package_name": "com.jsos.randomverse2"
         }
       },
       "oauth_client": [

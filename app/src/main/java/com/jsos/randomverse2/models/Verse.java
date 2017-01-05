@@ -1,4 +1,4 @@
-package com.jjh.randomverse.models;
+package com.jsos.randomverse2.models;
 
 /**
  * Created by Jhesed 2016/12/19

@@ -1,42 +1,48 @@
 /***
- * VerseDetailsActivity.java: Displays list of Bible Verses
+ * VerseDetailsActivity.java: Displays details (i.e. NIV and MBB content)
+ *                            of a specific Bible Verse
  * @Author: Jhesed Tacadena
- * @Date: December 2016
+ * @Date: November 2016
  * */
 
-package com.jjh.randomverse;
+package com.jsos.randomverse2;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-import com.jjh.randomverse.adapters.VerseAdapter;
-import com.jjh.randomverse.bible.BibleV1;
+import com.jsos.randomverse2.bible.BibleV1;
 
-public class VerseListActivity extends AppCompatActivity {
+public class VerseDetailsActivity extends AppCompatActivity {
 
-    /* SECTION: Variable Initializations */
+    /* SECTION: Variable Declarations */
 
-    private ListView verseListView;
-    private VerseAdapter vAdapter;
+    private Button btnPrev;
+    private Button btnNext;
+    private TextView titleHeader;
+    private TextView titleEngNIV;
+    private TextView titleFilMBB;
+    private TextView contentEngNIV;
+    private TextView contentFilMBB;
+    private static int verseId;
     private Menu menu;
-    private static final String TAG = "VerseListActivity";
+    private static final String TAG = "VerseDetailsActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.verse_list);
+        setContentView(R.layout.activity_verse_details);
 
         /* SECTION: ADS */
 
@@ -53,21 +59,52 @@ public class VerseListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
-        verseListView = (ListView) findViewById(R.id.verseList);
+        // Retrieve view objects
+        titleHeader = (TextView) findViewById(R.id.titleHeader);
+        titleEngNIV = (TextView) findViewById(R.id.titleEngNIV);
+        titleFilMBB = (TextView) findViewById(R.id.titleFilMBB);
+        contentEngNIV = (TextView) findViewById(R.id.contentEngNIV);
+        contentFilMBB = (TextView) findViewById(R.id.contentFilMBB);
 
-        // This is the array adapter, it takes the context of the activity as a
-        // first parameter, the type of list view as a second parameter
-        if (vAdapter == null) {
-            vAdapter = new VerseAdapter(this, BibleV1.versesQuery);
-            verseListView.setAdapter(vAdapter);
-        }
-//        else {
-//            Log.d(TAG, "vAdapter not Null, refreshing");
-//            vAdapter.clear();
-//            vAdapter.addAll(BibleV1.versesQuery);
-//            vAdapter.notifyDataSetChanged();
-//        }
-        verseListView.setAdapter(vAdapter);
+        // Retrieve information passed from VerseListActivity class
+        verseId = getIntent().getExtras().getInt("verseId");
+
+        // Update views
+        btnPrev = (Button) findViewById(R.id.buttonPrev) ;
+        btnNext = (Button) findViewById(R.id.buttonNext) ;
+        titleEngNIV.setText(R.string.NIV_title);
+        titleFilMBB.setText(R.string.MBB_title);
+        titleHeader.setText(BibleV1.versesQuery.get(verseId).name);
+        contentEngNIV.setText(BibleV1.versesQuery.get(verseId).contentEnglish);
+        contentFilMBB.setText(BibleV1.versesQuery.get(verseId).contentFilipino);
+
+        /* SECTION: Button events */
+        btnPrev.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+            verseId -= 1;
+            if (verseId < 0) {
+                verseId = BibleV1.VERSE_COUNT;  // restart to first index
+            }
+            titleHeader.setText(BibleV1.versesQuery.get(verseId).name);
+            contentEngNIV.setText(BibleV1.versesQuery.get(verseId).contentEnglish);
+            contentFilMBB.setText(BibleV1.versesQuery.get(verseId).contentFilipino);
+            }
+        });
+        btnNext.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                verseId += 1;
+                if (verseId > BibleV1.VERSE_COUNT) {
+                    verseId = 0;  // restart to first index
+                }
+                titleHeader.setText(BibleV1.versesQuery.get(verseId).name);
+                contentEngNIV.setText(BibleV1.versesQuery.get(verseId).contentEnglish);
+                contentFilMBB.setText(BibleV1.versesQuery.get(verseId).contentFilipino);
+            }
+        });
     }
 
     @Override
@@ -82,7 +119,7 @@ public class VerseListActivity extends AppCompatActivity {
         MenuItem menuHome = menu.findItem(R.id.menu_home);
         MenuItem menuList = menu.findItem(R.id.menu_verse_list);
         menuHome.setVisible(true);
-        menuList.setVisible(false);
+        menuList.setVisible(true);
         return true;
     }
 
@@ -98,7 +135,8 @@ public class VerseListActivity extends AppCompatActivity {
         else if (id == R.id.menu_verse_list) {
             // Shows information dialog
             Intent intent = new Intent(this, VerseListActivity.class);
-            this.startActivity(intent);
+            startActivity(intent);
+            return true;
         }
         else if (id == R.id.menu_home) {
             // Shows information dialog

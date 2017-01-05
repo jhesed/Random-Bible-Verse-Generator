@@ -4,7 +4,7 @@
  * @Date: November 2016
  * */
 
-package com.jjh.randomverse.adapters;
+package com.jsos.randomverse2.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,9 +15,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import com.jjh.randomverse.R;
-import com.jjh.randomverse.VerseDetailsActivity;
-import com.jjh.randomverse.models.Verse;
+import com.jsos.randomverse2.R;
+import com.jsos.randomverse2.VerseDetailsActivity;
+import com.jsos.randomverse2.models.Verse;
 
 public class VerseAdapter extends ArrayAdapter<Verse> {
 
