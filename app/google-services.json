@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "823244995385",
+    "firebase_url": "https://jjhsoftware.firebaseio.com",
+    "project_id": "jjhsoftware",
+    "storage_bucket": "jjhsoftware.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823244995385:android:a04a69f82c4792cd",
+        "android_client_info": {
+          "package_name": "com.jjh.randomverse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823244995385-2cjt2he2a7k7vfpfk3obl3i330iids5v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5pybQdNjD_zWxclAltxFxCQxO7NzALes"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
