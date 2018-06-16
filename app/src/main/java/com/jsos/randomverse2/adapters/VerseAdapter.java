@@ -8,16 +8,18 @@ package com.jsos.randomverse2.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import com.jsos.randomverse2.R;
 import com.jsos.randomverse2.VerseDetailsActivity;
 import com.jsos.randomverse2.models.Verse;
+
+import java.util.ArrayList;
 
 public class VerseAdapter extends ArrayAdapter<Verse> {
 
@@ -26,7 +28,7 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
     private final String TAG = "verseListAdapter";
     private final Context context;
     private final ArrayList<Verse> verse;
-    private static ViewHolder viewHolder;
+    private ViewHolder viewHolder;
 
     public VerseAdapter(Context context, ArrayList<Verse> verse) {
         super(context, R.layout.activity_verse_list, verse);
@@ -35,17 +37,10 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
         viewHolder = new ViewHolder();
     }
 
-    private static class ViewHolder {
-        /**
-         * Private class for recyclable information
-         * */
-        int verseId;
-        TextView verseName;
-        // TextView verseContent;
-    }
-
-    public View getView(int position, View view, ViewGroup parent) {
-        /**
+    @NonNull
+    @Override
+    public View getView(int position, View view, @NonNull ViewGroup parent) {
+        /*
          * Overrides parent for retrieving view
          * */
 
@@ -81,5 +76,14 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
             }
         });
         return view;
+    }
+
+    private static class ViewHolder {
+        /**
+         * Private class for recyclable information
+         */
+        int verseId;
+        TextView verseName;
+        // TextView verseContent;
     }
 }

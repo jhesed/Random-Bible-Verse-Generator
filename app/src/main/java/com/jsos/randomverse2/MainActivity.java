@@ -1,16 +1,6 @@
-/***
-* MainActivity.java: Displays the Main page for randomizing Bible verses
-* @Author: Jhesed Tacadena
-* @Date: November 2016
-* */
-
 package com.jsos.randomverse2;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,42 +8,34 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import com.jsos.randomverse2.bible.BibleV1;
 
 import java.util.Random;
 
-import com.jsos.randomverse2.bible.BibleV1;
+public class MainActivity extends BaseRandomBibleVerse {
+    public static final String TAG = "MainActivity";
+    /**
+     * MainActivity.java: Displays the Main page for randomizing Bible verses
+     */
 
-public class MainActivity extends AppCompatActivity {
 
     /* SECTION:  Variable Declarations */
 
-    private Button btnRandom;
     private TextView titleHeader;
     private TextView titleEngNIV;
     private TextView titleFilMBB;
     private TextView contentEngNIV;
     private TextView contentFilMBB;
-    private Menu menu;
     private int lastVerseId = -1;
-    public static final String TAG = "MainActivity";
+    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /* SECTION: ADS */
-
-        try {
-            mAdView = (AdView) findViewById(R.id.adView);
-            AdRequest.Builder adRequest = new AdRequest.Builder();
-            adRequest.addTestDevice("E0672EF9205508F55913C27654ED0CE9");
-            mAdView.loadAd(adRequest.build());
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        // Setup ads
+        setupAds();
 
         // Set icon in action bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -63,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         BibleV1.generateQuery();
 
         // Sets Random Button
-        btnRandom = (Button) findViewById(R.id.buttonRandom) ;
+        Button btnRandom = (Button) findViewById(R.id.buttonRandom);
 
         /* SECTION: Events */
 
@@ -112,81 +94,6 @@ public class MainActivity extends AppCompatActivity {
         MenuItem menuList = menu.findItem(R.id.menu_verse_list);
         menuHome.setVisible(false);
         menuList.setVisible(true);
-
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        /* Adds behaviors to menu */
-        int id = item.getItemId();
-
-        if (id == R.id.menu_about) {
-            // Shows information dialog
-            showAboutDialog();
-        }
-        else if (id == R.id.menu_verse_list) {
-            // Shows information dialog
-            Intent intent = new Intent(this, VerseListActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    private void showAboutDialog() {
-        /**
-        Displays dialog box of developer information
-         */
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        // Get the layout inflater
-        LayoutInflater inflater = this.getLayoutInflater();
-
-        // Inflate and set the layout for the dialog
-        // Pass null as the parent view because its going in the dialog layout
-        View layout = inflater.inflate(R.layout.dialog_menu_about, null);
-        builder.setView(layout);
-        //        builder.setNegativeButton("OK", null);
-        final AlertDialog dialog = builder.create();
-
-        // close dialog box on click
-        Button okButton = (Button)layout.findViewById(R.id.dialogOk);
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
-
-        dialog.show();
-    }
-
-    /************************* ADS ******************************/
-
-    private AdView mAdView;
-    @Override
-    public void onPause() {
-        if (mAdView != null) {
-            mAdView.pause();
-        }
-        super.onPause();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (mAdView != null) {
-            mAdView.resume();
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        if (mAdView != null) {
-            mAdView.destroy();
-        }
-        super.onDestroy();
     }
 }
