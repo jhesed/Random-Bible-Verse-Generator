@@ -27,6 +27,6 @@
     <string name="NIV_title">NIV</string>
     <string name="MBB_title">MBB</string>
     <string name="memorization_challenge">Memorization Challenge</string>
-    <string name="bible_verse_memorization_challenge">32 Bible Verse Memorization Challenge</string>
-    <string name="bible_verse_memorization_challenge_desc">This challenge originated from JSOS Christian Church wherein attendees should be able to memorize the following 32 verses.</string>
+    <string name="bible_verse_memorization_challenge">Bible Verse Memorization Challenge</string>
+    <string name="bible_verse_memorization_challenge_desc">This challenge originated from JSOS Christian Church wherein attendees should be able to memorize the following verses:</string>
 </resources>

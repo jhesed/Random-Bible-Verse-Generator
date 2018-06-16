@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.jsos.randomverse2.BibleMemorizationChallengeDetailsActivity;
 import com.jsos.randomverse2.R;
-import com.jsos.randomverse2.VerseDetailsActivity;
 import com.jsos.randomverse2.models.Verse;
 
 import java.util.ArrayList;
@@ -25,13 +25,13 @@ public class BibleMemorizationChallengeVerseAdapter extends ArrayAdapter<Verse> 
 
     /* SECTION: Variable Declarations */
 
-    private final String TAG = "verseListAdapter";
+    private final String TAG = "BibleMemorizationListAdapter";
     private final Context context;
     private final ArrayList<Verse> verse;
     private ViewHolder viewHolder;
 
     public BibleMemorizationChallengeVerseAdapter(Context context, ArrayList<Verse> verse) {
-        super(context, R.layout.activity_memorization_verse_list, verse);
+        super(context, R.layout.activity_bible_memorization_verse_list, verse);
         this.context = context;
         this.verse = verse;
         viewHolder = new ViewHolder();
@@ -47,7 +47,7 @@ public class BibleMemorizationChallengeVerseAdapter extends ArrayAdapter<Verse> 
         Verse verse = getItem(position);
 
         if (view == null) {
-            view = LayoutInflater.from(getContext()).inflate(R.layout.activity_memorization_verse_list, null, true);
+            view = LayoutInflater.from(getContext()).inflate(R.layout.activity_bible_memorization_verse_list, null, true);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
@@ -69,7 +69,7 @@ public class BibleMemorizationChallengeVerseAdapter extends ArrayAdapter<Verse> 
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, VerseDetailsActivity.class);
+                Intent intent = new Intent(context, BibleMemorizationChallengeDetailsActivity.class);
                 intent.putExtra("verseId", viewHolder.verseId);
                 context.startActivity(intent);
             }

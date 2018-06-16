@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#093145"
+    android:fillViewport="true"
+    android:padding="5dp"
+    tools:context="com.jsos.randomverse2.VerseDetailsActivity">
+
+    <ScrollView
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/adView"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="@string/god_loves_you"
+                android:textColor="@color/colorHeader"
+                android:textSize="25sp" />
+
+            <!--NIV ENGLISH-->
+
+            <TextView
+                android:id="@+id/titleEngNIV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingTop="15dp"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/colorText"
+                android:textStyle="italic|bold" />
+
+            <TextView
+                android:id="@+id/contentEngNIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="@string/prayer_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorText"
+                android:textStyle="italic" />
+
+            <!--TAGALOG MBB-->
+
+            <TextView
+                android:id="@+id/titleFilMBB"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingTop="15dp"
+                android:text="@string/prayer"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/colorText"
+                android:textStyle="italic|bold" />
+
+            <TextView
+                android:id="@+id/contentFilMBB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingBottom="15dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="@string/prayer_acceptance"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorText"
+                android:textStyle="italic" />
+
+            <LinearLayout
+                android:id="@+id/buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonPrev"
+                    android:layout_width="101dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10sp"
+                    android:layout_marginRight="10sp"
+                    android:background="@color/colorHeader"
+                    android:text="@string/prev"
+                    android:textColor="@color/colorAccent" />
+
+                <Button
+                    android:id="@+id/buttonNext"
+                    android:layout_width="101dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorHeader"
+                    android:text="@string/next"
+                    android:textColor="@color/colorAccent" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ADMOBS -->
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
+
+</RelativeLayout>
