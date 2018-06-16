@@ -8,9 +8,9 @@ import java.util.ArrayList;
  * Created by JHESE154 on 8/24/2016.
  * A class that holds the Bible verses to be shown on the user
  */
-public class BibleV1 {
+public class BibleMemorizationChallenge {
     public final static ArrayList<Verse> versesQuery = new ArrayList<>();
-    public static final int VERSE_COUNT = 98;  // hardcoded for optimization. Fix this everytime
+    public static final int VERSE_COUNT = 32;  // hardcoded for optimization. Fix this everytime
 //    public static final double VERSION = 1.0;  // support for future updates
 
     public static ArrayList<Verse> generateQuery() {

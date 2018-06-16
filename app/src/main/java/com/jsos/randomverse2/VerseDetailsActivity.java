@@ -59,7 +59,7 @@ public class VerseDetailsActivity extends BaseRandomBibleVerse {
             public void onClick(View view) {
                 verseId -= 1;
                 if (verseId < 0) {
-                    verseId = BibleV1.VERSE_COUNT;  // restart to first index
+                    verseId = BibleV1.VERSE_COUNT;  // restart to lastW index
                 }
                 titleHeader.setText(BibleV1.versesQuery.get(verseId).name);
                 contentEngNIV.setText(BibleV1.versesQuery.get(verseId).contentEnglish);

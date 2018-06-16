@@ -76,8 +76,10 @@ public class BaseRandomBibleVerse extends AppCompatActivity {
         invalidateOptionsMenu();
         MenuItem menuHome = menu.findItem(R.id.menu_home);
         MenuItem menuList = menu.findItem(R.id.menu_verse_list);
+        MenuItem menuMemorizationChallange = menu.findItem(R.id.menu_memorization_challenge);
         menuHome.setVisible(true);
         menuList.setVisible(true);
+        menuMemorizationChallange.setVisible(true);
         return true;
     }
 
@@ -90,8 +92,13 @@ public class BaseRandomBibleVerse extends AppCompatActivity {
             // Shows information dialog
             showAboutDialog();
         } else if (id == R.id.menu_verse_list) {
-            // Shows information dialog
+            // Shows list of verses
             Intent intent = new Intent(this, VerseListActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.menu_memorization_challenge) {
+            // Shows Bible Memorization page
+            Intent intent = new Intent(this, BibleMemorizationChallengeActivity.class);
             startActivity(intent);
             return true;
         } else if (id == R.id.menu_home) {

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.jsos.randomverse2.bible.BibleMemorizationChallenge;
 import com.jsos.randomverse2.bible.BibleV1;
 
 import java.util.Random;
@@ -43,6 +44,7 @@ public class MainActivity extends BaseRandomBibleVerse {
 
         // Generate the Bible Verses
         BibleV1.generateQuery();
+        BibleMemorizationChallenge.generateQuery();
 
         // Sets Random Button
         Button btnRandom = (Button) findViewById(R.id.buttonRandom);
@@ -92,8 +94,10 @@ public class MainActivity extends BaseRandomBibleVerse {
         invalidateOptionsMenu();
         MenuItem menuHome = menu.findItem(R.id.menu_home);
         MenuItem menuList = menu.findItem(R.id.menu_verse_list);
+        MenuItem menuMemorizationChallange = menu.findItem(R.id.menu_memorization_challenge);
         menuHome.setVisible(false);
         menuList.setVisible(true);
+        menuMemorizationChallange.setVisible(true);
         return true;
     }
 }
