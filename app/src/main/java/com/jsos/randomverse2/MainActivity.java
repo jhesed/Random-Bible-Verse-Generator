@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.jsos.randomverse2.bible.BibleMemorizationChallenge;
 import com.jsos.randomverse2.bible.BibleV1;
 
 import java.util.Random;
@@ -44,7 +43,6 @@ public class MainActivity extends BaseRandomBibleVerse {
 
         // Generate the Bible Verses
         BibleV1.generateQuery();
-        BibleMemorizationChallenge.generateQuery();
 
         // Sets Random Button
         Button btnRandom = (Button) findViewById(R.id.buttonRandom);

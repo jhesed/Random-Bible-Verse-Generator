@@ -15,22 +15,21 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.jsos.randomverse2.BibleMemorizationChallengeDetailsActivity;
 import com.jsos.randomverse2.R;
 import com.jsos.randomverse2.models.Verse;
 
 import java.util.ArrayList;
 
-public class BibleMemorizationChallengeVerseAdapter extends ArrayAdapter<Verse> {
+public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
 
     /* SECTION: Variable Declarations */
 
-    private final String TAG = "BibleMemorizationListAdapter";
+    private final String TAG = "BibleMListAdapter";
     private final Context context;
     private final ArrayList<Verse> verse;
     private ViewHolder viewHolder;
 
-    public BibleMemorizationChallengeVerseAdapter(Context context, ArrayList<Verse> verse) {
+    public BibleMCVerseAdapter(Context context, ArrayList<Verse> verse) {
         super(context, R.layout.activity_bible_memorization_verse_list, verse);
         this.context = context;
         this.verse = verse;

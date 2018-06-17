@@ -98,7 +98,7 @@ public class BaseRandomBibleVerse extends AppCompatActivity {
             return true;
         } else if (id == R.id.menu_memorization_challenge) {
             // Shows Bible Memorization page
-            Intent intent = new Intent(this, BibleMemorizationChallengeActivity.class);
+            Intent intent = new Intent(this, BibleMCActivity.class);
             startActivity(intent);
             return true;
         } else if (id == R.id.menu_home) {

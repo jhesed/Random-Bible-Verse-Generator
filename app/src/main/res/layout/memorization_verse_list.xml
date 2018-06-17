@@ -9,7 +9,7 @@
     android:fillViewport="true"
     android:orientation="vertical"
     android:padding="5dp"
-    tools:context="com.jsos.randomverse2.BibleMemorizationChallengeActivity">
+    tools:context="com.jsos.randomverse2.BibleMCActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -55,5 +55,6 @@
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
+
 
 </RelativeLayout>

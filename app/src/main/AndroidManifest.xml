@@ -43,7 +43,8 @@
 
         <activity android:name="com.jsos.randomverse2.VerseListActivity"/>
         <activity android:name="com.jsos.randomverse2.VerseDetailsActivity"/>
-        <activity android:name="com.jsos.randomverse2.BibleMemorizationChallengeActivity" />
+        <activity android:name="com.jsos.randomverse2.BibleMCActivity" />
+        <activity android:name="com.jsos.randomverse2.BibleMCDetailsActivity" />
 
     </application>
 

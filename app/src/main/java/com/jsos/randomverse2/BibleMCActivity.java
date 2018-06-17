@@ -10,16 +10,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ListView;
 
-import com.jsos.randomverse2.adapters.BibleMemorizationChallengeVerseAdapter;
-import com.jsos.randomverse2.bible.BibleMemorizationChallenge;
+import com.jsos.randomverse2.adapters.BibleMCVerseAdapter;
+import com.jsos.randomverse2.bible.BibleMCV1;
 
-public class BibleMemorizationChallengeActivity extends BaseRandomBibleVerse {
+public class BibleMCActivity extends BaseRandomBibleVerse {
 
     /* SECTION: Variable Initializations */
 
-    private static final String TAG = "BibleMemorizationChallenge";
+    private static final String TAG = "BibleMCV1";
     private ListView verseListView;
-    private BibleMemorizationChallengeVerseAdapter vAdapter;
+    private BibleMCVerseAdapter vAdapter;
     private Menu menu;
 
     @Override
@@ -34,12 +34,15 @@ public class BibleMemorizationChallengeActivity extends BaseRandomBibleVerse {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
+        // Generate Bible Verses
+        BibleMCV1.generateQuery();
+
         verseListView = (ListView) findViewById(R.id.verseList);
 
         // This is the array adapter, it takes the context of the activity as a
         // first parameter, the type of list view as a second parameter
         if (vAdapter == null) {
-            vAdapter = new BibleMemorizationChallengeVerseAdapter(this, BibleMemorizationChallenge.versesQuery);
+            vAdapter = new BibleMCVerseAdapter(this, BibleMCV1.versesQuery);
             verseListView.setAdapter(vAdapter);
         }
 //        else {
