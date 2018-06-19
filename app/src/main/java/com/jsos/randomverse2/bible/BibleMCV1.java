@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class BibleMCV1 {
     public final static ArrayList<Verse> versesQuery = new ArrayList<>();
-    public static final int VERSE_COUNT = 43;  // hardcoded for optimization. Fix this everytime
+    public static final int VERSE_COUNT = 42;  // hardcoded for optimization. Fix this everytime
 //    public static final double VERSION = 1.0;  // support for future updates
 
     public static ArrayList<Verse> generateQuery() {

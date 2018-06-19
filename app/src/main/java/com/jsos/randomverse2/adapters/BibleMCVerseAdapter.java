@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.jsos.randomverse2.BibleMCDetailsActivity;
 import com.jsos.randomverse2.R;
 import com.jsos.randomverse2.models.Verse;
 
@@ -26,7 +27,7 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
 
     private final String TAG = "BibleMListAdapter";
     private final Context context;
-    private final ArrayList<Verse> verse;
+    private ArrayList<Verse> verse;
     private ViewHolder viewHolder;
 
     public BibleMCVerseAdapter(Context context, ArrayList<Verse> verse) {
@@ -46,7 +47,7 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
         Verse verse = getItem(position);
 
         if (view == null) {
-            view = LayoutInflater.from(getContext()).inflate(R.layout.activity_bible_memorization_verse_list, null, true);
+            view = LayoutInflater.from(getContext()).inflate(R.layout.activity_bible_memorization_verse_list, null);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
@@ -68,7 +69,7 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, BibleMemorizationChallengeDetailsActivity.class);
+                Intent intent = new Intent(context, BibleMCDetailsActivity.class);
                 intent.putExtra("verseId", viewHolder.verseId);
                 context.startActivity(intent);
             }
