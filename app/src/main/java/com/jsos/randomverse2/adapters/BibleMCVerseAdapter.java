@@ -46,7 +46,7 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
 
         if (view == null) {
             viewHolder = new ViewHolder();
-            view = LayoutInflater.from(getContext()).inflate(R.layout.activity_verse_list, null);
+            view = LayoutInflater.from(getContext()).inflate(R.layout.activity_bible_memorization_verse_list, null);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
