@@ -46,7 +46,6 @@ public class VerseAdapter extends ArrayAdapter<Verse> {
 
         if (view == null) {
             view = LayoutInflater.from(getContext()).inflate(R.layout.activity_verse_list, null);
-            // Lookup view for data population
             viewHolder = new ViewHolder();
         }
         else {

@@ -25,40 +25,36 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
 
     /* SECTION: Variable Declarations */
 
-    private final String TAG = "BibleMListAdapter";
+    private final String TAG = "verseListAdapter";
     private final Context context;
-    private ArrayList<Verse> verse;
-    private ViewHolder viewHolder;
 
-    public BibleMCVerseAdapter(Context context, ArrayList<Verse> verse) {
-        super(context, R.layout.activity_bible_memorization_verse_list, verse);
+    public BibleMCVerseAdapter(Context context, ArrayList<Verse> verseList) {
+        super(context, R.layout.activity_bible_memorization_verse_list, verseList);
         this.context = context;
-        this.verse = verse;
-        viewHolder = new ViewHolder();
     }
 
     @NonNull
     @Override
-    public View getView(int position, View view, @NonNull ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         /*
          * Overrides parent for retrieving view
          * */
 
+        View view = convertView;
+        final ViewHolder viewHolder;
         Verse verse = getItem(position);
 
         if (view == null) {
-            view = LayoutInflater.from(getContext()).inflate(R.layout.activity_bible_memorization_verse_list, null);
+            viewHolder = new ViewHolder();
+            view = LayoutInflater.from(getContext()).inflate(R.layout.activity_verse_list, null);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        // Lookup view for data population
+        // Populate the data into the template view using the data object
         viewHolder.verseId = verse.id;
         viewHolder.verseName = (TextView) view.findViewById(R.id.verseItem);
-
-        // Populate the data into the template view using the data object
         viewHolder.verseName.setText(verse.name);
-        // viewHolder.verseContent.setText(verse.content);
 
         view.setTag(viewHolder);
         view.setLongClickable(true);
@@ -83,6 +79,5 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
          */
         int verseId;
         TextView verseName;
-        // TextView verseContent;
     }
 }
