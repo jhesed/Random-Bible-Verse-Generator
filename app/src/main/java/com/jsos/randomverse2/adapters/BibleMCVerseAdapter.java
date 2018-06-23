@@ -8,6 +8,7 @@ package com.jsos.randomverse2.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,13 +18,12 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import com.jsos.randomverse2.BibleMCActivity;
 import com.jsos.randomverse2.BibleMCDetailsActivity;
 import com.jsos.randomverse2.R;
 import com.jsos.randomverse2.models.Verse;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
 
@@ -31,12 +31,20 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
 
     private final String TAG = "verseListAdapter";
     private final Context context;
-    private List<Boolean> checkboxState;
+    private ArrayList<Boolean> checkboxStates = new ArrayList<Boolean>();
 
-    public BibleMCVerseAdapter(Context context, ArrayList<Verse> verseList) {
+    public BibleMCVerseAdapter(Context context, ArrayList<Verse> verseList, int[] oldStatuses) {
         super(context, R.layout.activity_bible_memorization_verse_list, verseList);
         this.context = context;
-        this.checkboxState = new ArrayList<Boolean>(Collections.nCopies(verseList.size(), false));
+
+        for (int i = 0; i < this.getCount(); i++) {
+            checkboxStates.add(i, false);
+        }
+        if (oldStatuses != null) {
+            for (int j = 0; j < oldStatuses.length; j++) {
+                checkboxStates.set(oldStatuses[j], true);
+            }
+        }
     }
 
     @NonNull
@@ -66,7 +74,7 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
         view.setLongClickable(true);
 
         CheckBox cb = (CheckBox) view.findViewById(R.id.checkBoxMemorized);
-//        cb.setChecked(checkboxState.get(position));
+//        cb.setChecked(checkboxStates.get(position));
 
 
         /* SECTION : Events */
@@ -85,18 +93,34 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
 
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
+
                 if (isChecked) {
-                    checkboxState.set(position, true);
-                    // do some operations here
+                    checkboxStates.set(position, true);
                 } else {
-                    checkboxState.set(position, false);
-                    // do some operations here
+                    checkboxStates.set(position, false);
                 }
+
+                String toStore = "";
+                for (int i = 0; i < checkboxStates.size(); i++) {
+                    if (checkboxStates.get(i)) {
+                        toStore += i + ",";
+                    }
+                }
+
+                // Update stored shared preference
+                SharedPreferences.Editor prefsEditor = BibleMCActivity.getActivitySharedPreferencesEditor();
+                prefsEditor.putString("checkbox_states", toStore.equals("") ? null
+                        : toStore.substring(0, toStore.length() - 1));
+                prefsEditor.commit();
             }
         });
-        cb.setChecked(checkboxState.get(position));
+        cb.setChecked(checkboxStates.get(position));
 
         return view;
+    }
+
+    public ArrayList<Boolean> getCheckedStatus() {
+        return checkboxStates;
     }
 
     private static class ViewHolder {
