@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.jsos.randomverse2.BibleMCDetailsActivity;
@@ -20,6 +22,8 @@ import com.jsos.randomverse2.R;
 import com.jsos.randomverse2.models.Verse;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
 
@@ -27,15 +31,17 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
 
     private final String TAG = "verseListAdapter";
     private final Context context;
+    private List<Boolean> checkboxState;
 
     public BibleMCVerseAdapter(Context context, ArrayList<Verse> verseList) {
         super(context, R.layout.activity_bible_memorization_verse_list, verseList);
         this.context = context;
+        this.checkboxState = new ArrayList<Boolean>(Collections.nCopies(verseList.size(), false));
     }
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
         /*
          * Overrides parent for retrieving view
          * */
@@ -59,6 +65,10 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
         view.setTag(viewHolder);
         view.setLongClickable(true);
 
+        CheckBox cb = (CheckBox) view.findViewById(R.id.checkBoxMemorized);
+//        cb.setChecked(checkboxState.get(position));
+
+
         /* SECTION : Events */
 
         view.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +80,22 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
                 context.startActivity(intent);
             }
         });
+
+        cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            public void onCheckedChanged(CompoundButton buttonView,
+                                         boolean isChecked) {
+                if (isChecked) {
+                    checkboxState.set(position, true);
+                    // do some operations here
+                } else {
+                    checkboxState.set(position, false);
+                    // do some operations here
+                }
+            }
+        });
+        cb.setChecked(checkboxState.get(position));
+
         return view;
     }
 
