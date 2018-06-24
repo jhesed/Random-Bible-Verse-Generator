@@ -1,6 +1,5 @@
 package com.jsos.randomverse2;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,7 +44,8 @@ public class BibleMCDetailsActivity extends BaseRandomBibleVerse {
         verseId = getIntent().getExtras().getInt("verseId");
 
         // Update views
-        Button btnOk = (Button) findViewById(R.id.buttonOk);
+        Button btnPrev = (Button) findViewById(R.id.buttonPrev);
+        Button btnNext = (Button) findViewById(R.id.buttonNext);
         titleEngNIV.setText(R.string.NIV_title);
         titleFilMBB.setText(R.string.MBB_title);
         titleHeader.setText(BibleMCV1.versesQuery.get(verseId).name);
@@ -53,12 +53,31 @@ public class BibleMCDetailsActivity extends BaseRandomBibleVerse {
         contentFilMBB.setText(BibleMCV1.versesQuery.get(verseId).contentFilipino);
 
         /* SECTION: Button events */
-        btnOk.setOnClickListener(new View.OnClickListener() {
+
+        btnPrev.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), BibleMCActivity.class);
-                startActivity(intent);
+                verseId -= 1;
+                if (verseId < 0) {
+                    verseId = BibleMCV1.VERSE_COUNT;  // restart to lastW index
+                }
+                titleHeader.setText(BibleMCV1.versesQuery.get(verseId).name);
+                contentEngNIV.setText(BibleMCV1.versesQuery.get(verseId).contentEnglish);
+                contentFilMBB.setText(BibleMCV1.versesQuery.get(verseId).contentFilipino);
+            }
+        });
+        btnNext.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                verseId += 1;
+                if (verseId > BibleMCV1.VERSE_COUNT) {
+                    verseId = 0;  // restart to first index
+                }
+                titleHeader.setText(BibleMCV1.versesQuery.get(verseId).name);
+                contentEngNIV.setText(BibleMCV1.versesQuery.get(verseId).contentEnglish);
+                contentFilMBB.setText(BibleMCV1.versesQuery.get(verseId).contentFilipino);
             }
         });
     }
