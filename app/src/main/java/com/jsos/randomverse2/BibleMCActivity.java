@@ -28,10 +28,6 @@ public class BibleMCActivity extends BaseRandomBibleVerse {
     private BibleMCVerseAdapter vAdapter;
     private Menu menu;
 
-    public static Context getContextOfApplication() {
-        return contextOfApplication;
-    }
-
     public static SharedPreferences.Editor getActivitySharedPreferencesEditor() {
         return prefsEditor;
     }

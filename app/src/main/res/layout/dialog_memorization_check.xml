@@ -29,7 +29,7 @@
             android:capitalize="words"
             android:clickable="false"
             android:gravity="fill_vertical|center"
-            android:text="Verify Bible Memorization"
+            android:text="@string/verify_bible_memorization"
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/colorPrimary" />
@@ -104,7 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingBottom="10dp"
-                        android:text="Input word by word content (NIV/MBB) of Bible Verse (punctuation marks are ignored):"
+                        android:text="@string/dialog_memorization_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorPrimary" />
 
@@ -112,6 +112,7 @@
                         android:id="@+id/memorization_content"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="text"
                         android:text=""
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorPrimaryDark" />
@@ -121,7 +122,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingBottom="10dp"
-                        android:text="Incorrect."
+                        android:text="@string/incorrect"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#ff0000"
                         android:visibility="gone" />
@@ -144,7 +145,7 @@
             android:layout_margin="5dp"
             android:background="@color/colorHeader"
             android:padding="10dp"
-            android:text="Submit"
+            android:text="@string/submit"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/colorPrimaryDark" />
 

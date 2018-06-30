@@ -31,4 +31,10 @@
     <string name="bible_verse_memorization_challenge">Bible Verse Memorization Challenge</string>
     <string name="bible_verse_memorization_challenge_desc">Join JSOS Church in memorizing the following Bible Verses:</string>
     <string name="donate_btc_title">Donate BTC:</string>
+    <string name="cancel_icon">Cancel Icon</string>
+    <string name="verify_bible_memorization">Verify Bible Memorization</string>
+    <string name="prayer_title_icon">Prayer Title Icon</string>
+    <string name="incorrect">Incorrect.</string>
+    <string name="dialog_memorization_content">Input word by word content (NIV/MBB) of Bible Verse (punctuation marks are ignored):</string>
+    <string name="submit">Submit</string>
 </resources>

@@ -114,11 +114,7 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
         return view;
     }
 
-    public ArrayList<Boolean> getCheckedStatus() {
-        return checkboxStates;
-    }
-
-    public void showVerificationDialog(final int position, final CheckBox cb) {
+    private void showVerificationDialog(final int position, final CheckBox cb) {
         /*
          Displays dialog box of developer information
          */
@@ -184,7 +180,7 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
         dialog.show();
     }
 
-    public void updateStatus() {
+    private void updateStatus() {
 
         String toStore = "";
         for (int i = 0; i < checkboxStates.size(); i++) {
