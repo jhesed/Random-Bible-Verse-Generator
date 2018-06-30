@@ -1,61 +1,61 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical|fill_vertical">
+    android:gravity="center_vertical|fill_vertical"
+    android:orientation="vertical">
 
     <!-- DIALOG BOX TITLE -->
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:padding="10dp"
         android:layout_gravity="center"
         android:background="@color/colorHeader"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="1">
 
         <ImageView
+            android:id="@+id/iconInfoDialog"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/iconInfoDialog"
-            android:src="@android:drawable/ic_dialog_info"
             android:layout_gravity="center"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:contentDescription="@string/info_dialog"
+            android:src="@android:drawable/ic_dialog_info"
             />
 
         <TextView
+            android:id="@+id/dialogTitle"
             android:layout_width="wrap_content"
             android:layout_height="47dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/about_title"
-            android:id="@+id/dialogTitle"
             android:layout_gravity="center"
-            android:gravity="center|fill_vertical"
             android:clickable="false"
+            android:gravity="center|fill_vertical"
+            android:text="@string/about_title"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/colorPrimary" />
 
     </LinearLayout>
 
     <!-- CHURCH INVITATION -->
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorText"
-        android:weightSum="1"
-        android:padding="10dp">
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="1">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/church_invitation"
-            android:textColor="@color/colorPrimary"
             android:layout_gravity="center"
             android:gravity="center"
+            android:text="@string/church_invitation"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorPrimary"
             android:textStyle="italic" />
 
     </LinearLayout>
@@ -69,40 +69,40 @@
     <!-- INFO -->
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="1"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
         android:padding="10dp"
-        android:layout_gravity="center">
+        android:weightSum="1">
 
         <!--TITLES-->
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:weightSum="1"
+            android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp">
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/developer_title"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorAccent"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/email_title"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorAccent"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/donate_btc_title"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/website_title"
                 android:textColor="@color/colorAccent"/>
 
         </LinearLayout>
@@ -110,31 +110,27 @@
         <!--DYNAMIC VALUES-->
 
 
-
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:weightSum="1">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/dev_name"
-                android:textColor="@color/colorAccent"/>
+                android:textAppearance="?android:attr/textAppearanceSmall" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/dev_email"
-                android:textColor="@color/colorAccent"/>
+                android:textAppearance="?android:attr/textAppearanceSmall" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/dev_website"
-                android:textColor="@color/colorAccent"/>
+                android:text="@string/donate_btc"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
         </LinearLayout>
     </LinearLayout>
@@ -151,21 +147,21 @@
 
     <!-- DONATION NOTES -->
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorText"
-        android:weightSum="1"
-        android:padding="10dp">
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="1">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/bug_report"
-                android:textColor="@color/colorPrimary"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:text="@string/bug_report"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="italic" />
 
     </LinearLayout>
@@ -183,15 +179,15 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:id="@+id/dialogOk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ok_text"
+            android:layout_margin="5dp"
             android:background="@color/colorHeader"
-            android:textColor="@color/colorPrimary"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/dialogOk"
             android:padding="10dp"
-            android:layout_margin="5dp"/>
+            android:text="@string/ok_text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/colorPrimary" />
 
     </LinearLayout>
 

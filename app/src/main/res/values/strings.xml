@@ -15,19 +15,20 @@
     <string name="next">NEXT</string>
     <string name="ok">OK</string>
     <string name="about_title">About</string>
-    <string name="church_invitation">Are you looking for a Church to grow your faith? Feel free to attend our Worship Service. For detailed information, you may visit www.jsoscc.com/contact-us</string>
+    <string name="church_invitation">We are inviting you to attend our Worship Service. Visit www.jsoscc.com/contact-us for details.</string>
     <string name="developer_title">Developer:</string>
     <string name="email_title">Email:</string>
     <string name="website_title">Website:</string>
     <string name="dev_name">Jhesed D. Tacadena</string>
     <string name="dev_email">jhesed.tacadena@gmail.com</string>
-    <string name="dev_website">www.jjhsoftware.com</string>
-    <string name="bug_report">Feel free to contact me for mistyped Bible verses, bug reports, donations, or sideline projects. God bless you!</string>
+    <string name="donate_btc">3DK8NFyGUJorowYDxcgkCp22hmKdEfnyS6</string>
+    <string name="bug_report">Please contact me for mistyped Bible verses and bug reports. God bless you!</string>
     <string name="ok_text">OK</string>
     <string name="bible_verse_title">Bible Verses:</string>
     <string name="NIV_title">NIV</string>
     <string name="MBB_title">MBB</string>
     <string name="memorization_challenge">Memorization Challenge</string>
     <string name="bible_verse_memorization_challenge">Bible Verse Memorization Challenge</string>
-    <string name="bible_verse_memorization_challenge_desc">This challenge originated from JSOS Christian Church wherein attendees should be able to memorize the following verses:</string>
+    <string name="bible_verse_memorization_challenge_desc">Join JSOS Church in memorizing the following Bible Verses:</string>
+    <string name="donate_btc_title">Donate BTC:</string>
 </resources>
