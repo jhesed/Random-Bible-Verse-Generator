@@ -84,5 +84,4 @@ public class BibleMCActivity extends BaseRandomBibleVerse {
 
         verseListView.setAdapter(vAdapter);
     }
-
 }

@@ -6,6 +6,7 @@
 
 package com.jsos.randomverse2.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,9 +15,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jsos.randomverse2.BibleMCActivity;
 import com.jsos.randomverse2.BibleMCDetailsActivity;
@@ -32,6 +37,7 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
     private final String TAG = "verseListAdapter";
     private final Context context;
     private ArrayList<Boolean> checkboxStates = new ArrayList<Boolean>();
+    private ArrayList<Verse> verseList = new ArrayList<Verse>();
 
     public BibleMCVerseAdapter(Context context, ArrayList<Verse> verseList, int[] oldStatuses) {
         super(context, R.layout.activity_bible_memorization_verse_list, verseList);
@@ -45,6 +51,7 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
                 checkboxStates.set(oldStatuses[j], true);
             }
         }
+        this.verseList = verseList;
     }
 
     @NonNull
@@ -73,9 +80,7 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
         view.setTag(viewHolder);
         view.setLongClickable(true);
 
-        CheckBox cb = (CheckBox) view.findViewById(R.id.checkBoxMemorized);
-//        cb.setChecked(checkboxStates.get(position));
-
+        final CheckBox cb = (CheckBox) view.findViewById(R.id.checkBoxMemorized);
 
         /* SECTION : Events */
 
@@ -95,25 +100,15 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
                                          boolean isChecked) {
 
                 if (isChecked) {
-                    checkboxStates.set(position, true);
+                    if (!checkboxStates.get(position))
+                        showVerificationDialog(position, cb);
                 } else {
                     checkboxStates.set(position, false);
-                }
-
-                String toStore = "";
-                for (int i = 0; i < checkboxStates.size(); i++) {
-                    if (checkboxStates.get(i)) {
-                        toStore += i + ",";
-                    }
-                }
-
-                // Update stored shared preference
-                SharedPreferences.Editor prefsEditor = BibleMCActivity.getActivitySharedPreferencesEditor();
-                prefsEditor.putString("checkbox_states", toStore.equals("") ? null
-                        : toStore.substring(0, toStore.length() - 1));
-                prefsEditor.commit();
+            }
+                updateStatus();
             }
         });
+
         cb.setChecked(checkboxStates.get(position));
 
         return view;
@@ -121,6 +116,89 @@ public class BibleMCVerseAdapter extends ArrayAdapter<Verse> {
 
     public ArrayList<Boolean> getCheckedStatus() {
         return checkboxStates;
+    }
+
+    public void showVerificationDialog(final int position, final CheckBox cb) {
+        /*
+         Displays dialog box of developer information
+         */
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        // Get the layout inflater
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        final View layout = inflater.inflate(R.layout.dialog_memorization_check, null);
+
+        TextView dialogTitle = (TextView) layout.findViewById(R.id.dialogTitle);
+        dialogTitle.setText(verseList.get(position).name);
+
+        builder.setView(layout);
+        //        builder.setNegativeButton("OK", null);
+        final AlertDialog dialog = builder.create();
+
+        /* Events */
+        Button okButton = (Button) layout.findViewById(R.id.dialogOk);
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText content = (EditText) layout.findViewById(R.id.memorization_content);
+                String contentText = content.getText().toString();
+
+                // TODO: Optimize regex
+                String actualAnswer = contentText.replaceAll(
+                        "[\\p{Punct}]", "").replaceAll("\\s", "").toLowerCase();
+                String expectedNIVAnswer = verseList.get(position).contentEnglish.replaceAll(
+                        "[\\p{Punct}]", "").replaceAll("\\s", "").toLowerCase();
+                String expectedMBBAnswer = verseList.get(position).contentFilipino.replaceAll(
+                        "[\\p{Punct}]", "").replaceAll("\\s", "").toLowerCase();
+
+                if (!actualAnswer.equals(expectedMBBAnswer) &&
+                        !actualAnswer.equals(expectedNIVAnswer)) {
+
+                    TextView incorrectText = (TextView) layout.findViewById(R.id.incorrect_text);
+                    incorrectText.setVisibility(View.VISIBLE);
+                    checkboxStates.set(position, false);
+                    cb.setChecked(checkboxStates.get(position));
+                } else {
+                    checkboxStates.set(position, true);
+                    updateStatus();
+                    cb.setChecked(checkboxStates.get(position));
+                    Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }
+            }
+        });
+
+        ImageView cancelButton = (ImageView) layout.findViewById(R.id.cancel_icon);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkboxStates.set(position, false);
+                cb.setChecked(checkboxStates.get(position));
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    public void updateStatus() {
+
+        String toStore = "";
+        for (int i = 0; i < checkboxStates.size(); i++) {
+            if (checkboxStates.get(i)) {
+                toStore += i + ",";
+            }
+        }
+
+        // Update stored shared preference
+        SharedPreferences.Editor prefsEditor = BibleMCActivity.getActivitySharedPreferencesEditor();
+        prefsEditor.putString("checkbox_states", toStore.equals("") ? null
+                : toStore.substring(0, toStore.length() - 1));
+        prefsEditor.commit();
+
     }
 
     private static class ViewHolder {
