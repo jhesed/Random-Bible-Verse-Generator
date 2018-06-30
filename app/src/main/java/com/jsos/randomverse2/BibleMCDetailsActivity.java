@@ -90,9 +90,11 @@ public class BibleMCDetailsActivity extends BaseRandomBibleVerse {
             public void onClick(View view) {
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                String shareBody = BibleMCV1.versesQuery.get(verseId).name;
-                shareBody += "\n\nNIV: \n" + BibleMCV1.versesQuery.get(verseId).contentEnglish;
+
+                String shareBody = "NIV: \n" + BibleMCV1.versesQuery.get(verseId).contentEnglish;
                 shareBody += "\n\nMBB: \n" + BibleMCV1.versesQuery.get(verseId).contentFilipino;
+                shareBody += "\n\n" + BibleMCV1.versesQuery.get(verseId).name;
+
                 shareBody += "\n\n via: https://play.google.com/store/apps/details?id=com.jsos.randomverse2";
 
                 sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,

@@ -35,7 +35,7 @@
     <string name="verify_bible_memorization">Verify Bible Memorization</string>
     <string name="prayer_title_icon">Prayer Title Icon</string>
     <string name="incorrect">Incorrect.</string>
-    <string name="dialog_memorization_content">Input word by word content (NIV/MBB) of Bible Verse (punctuation marks are ignored):</string>
+    <string name="dialog_memorization_content">Input word per word content (NIV/MBB):</string>
     <string name="submit">Submit</string>
     <string name="share">Share</string>
 </resources>
