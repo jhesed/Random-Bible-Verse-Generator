@@ -116,6 +116,16 @@
                     android:background="@color/colorHeader"
                     android:text="@string/next"
                     android:textColor="@color/colorAccent" />
+
+                <ImageView
+                    android:id="@+id/buttonShare"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:contentDescription="@string/info_dialog"
+                    android:src="@android:drawable/ic_menu_share" />
+
             </LinearLayout>
 
         </LinearLayout>

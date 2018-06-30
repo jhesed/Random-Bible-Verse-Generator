@@ -1,8 +1,10 @@
 package com.jsos.randomverse2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jsos.randomverse2.bible.BibleV1;
@@ -46,6 +48,7 @@ public class VerseDetailsActivity extends BaseRandomBibleVerse {
         // Update views
         Button btnPrev = (Button) findViewById(R.id.buttonPrev);
         Button btnNext = (Button) findViewById(R.id.buttonNext);
+        ImageView btnShare = (ImageView) findViewById(R.id.buttonShare);
         titleEngNIV.setText(R.string.NIV_title);
         titleFilMBB.setText(R.string.MBB_title);
         titleHeader.setText(BibleV1.versesQuery.get(verseId).name);
@@ -66,6 +69,7 @@ public class VerseDetailsActivity extends BaseRandomBibleVerse {
                 contentFilMBB.setText(BibleV1.versesQuery.get(verseId).contentFilipino);
             }
         });
+
         btnNext.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -77,6 +81,25 @@ public class VerseDetailsActivity extends BaseRandomBibleVerse {
                 titleHeader.setText(BibleV1.versesQuery.get(verseId).name);
                 contentEngNIV.setText(BibleV1.versesQuery.get(verseId).contentEnglish);
                 contentFilMBB.setText(BibleV1.versesQuery.get(verseId).contentFilipino);
+            }
+        });
+
+        btnShare.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+
+                String shareBody = BibleV1.versesQuery.get(verseId).name;
+                shareBody += "\n\nNIV: \n" + BibleV1.versesQuery.get(verseId).contentEnglish;
+                shareBody += "\n\nMBB: \n" + BibleV1.versesQuery.get(verseId).contentFilipino;
+                shareBody += "\n\n via: https://play.google.com/store/apps/details?id=com.jsos.randomverse2";
+
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
+                        BibleV1.versesQuery.get(verseId).name);
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, "Share via"));
             }
         });
     }

@@ -1,8 +1,10 @@
 package com.jsos.randomverse2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jsos.randomverse2.bible.BibleMCV1;
@@ -46,6 +48,7 @@ public class BibleMCDetailsActivity extends BaseRandomBibleVerse {
         // Update views
         Button btnPrev = (Button) findViewById(R.id.buttonPrev);
         Button btnNext = (Button) findViewById(R.id.buttonNext);
+        ImageView btnShare = (ImageView) findViewById(R.id.buttonShare);
         titleEngNIV.setText(R.string.NIV_title);
         titleFilMBB.setText(R.string.MBB_title);
         titleHeader.setText(BibleMCV1.versesQuery.get(verseId).name);
@@ -78,6 +81,24 @@ public class BibleMCDetailsActivity extends BaseRandomBibleVerse {
                 titleHeader.setText(BibleMCV1.versesQuery.get(verseId).name);
                 contentEngNIV.setText(BibleMCV1.versesQuery.get(verseId).contentEnglish);
                 contentFilMBB.setText(BibleMCV1.versesQuery.get(verseId).contentFilipino);
+            }
+        });
+
+        btnShare.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = BibleMCV1.versesQuery.get(verseId).name;
+                shareBody += "\n\nNIV: \n" + BibleMCV1.versesQuery.get(verseId).contentEnglish;
+                shareBody += "\n\nMBB: \n" + BibleMCV1.versesQuery.get(verseId).contentFilipino;
+                shareBody += "\n\n via: https://play.google.com/store/apps/details?id=com.jsos.randomverse2";
+
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
+                        BibleMCV1.versesQuery.get(verseId).name);
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, "Share via"));
             }
         });
     }

@@ -37,4 +37,5 @@
     <string name="incorrect">Incorrect.</string>
     <string name="dialog_memorization_content">Input word by word content (NIV/MBB) of Bible Verse (punctuation marks are ignored):</string>
     <string name="submit">Submit</string>
+    <string name="share">Share</string>
 </resources>
