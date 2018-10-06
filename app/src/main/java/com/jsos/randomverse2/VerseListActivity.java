@@ -28,7 +28,7 @@ public class VerseListActivity extends BaseRandomBibleVerse {
         setContentView(R.layout.verse_list);
 
         // Setup Ads
-        setupAds();
+//        setupAds();
 
         // Set icon in action bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);

@@ -40,7 +40,7 @@ public class BibleMCActivity extends BaseRandomBibleVerse {
         contextOfApplication = getApplicationContext();
 
         // Setup Ads
-        setupAds();
+//        setupAds();
 
         // Set icon in action bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);

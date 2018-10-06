@@ -29,7 +29,7 @@ public class BibleMCDetailsActivity extends BaseRandomBibleVerse {
         setContentView(R.layout.activity_bible_memorization_details);
 
         // Setup Ads
-        setupAds();
+//        setupAds();
 
         // Set icon in action bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);

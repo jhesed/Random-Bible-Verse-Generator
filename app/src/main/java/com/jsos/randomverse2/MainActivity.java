@@ -37,7 +37,7 @@ public class MainActivity extends BaseRandomBibleVerse {
         setContentView(R.layout.activity_main);
 
         // Setup ads
-        setupAds();
+//        setupAds();
 
         // Set icon in action bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);

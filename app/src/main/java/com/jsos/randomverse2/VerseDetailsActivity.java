@@ -29,7 +29,7 @@ public class VerseDetailsActivity extends BaseRandomBibleVerse {
         setContentView(R.layout.activity_verse_details);
 
         // Setup Ads
-        setupAds();
+//        setupAds();
 
         // Set icon in action bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);

@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 public class BaseRandomBibleVerse extends AppCompatActivity {
@@ -24,18 +23,18 @@ public class BaseRandomBibleVerse extends AppCompatActivity {
     private AdView mAdView;
     private Menu menu;
 
-    protected void setupAds() {
-
-        /* SECTION: ADS */
-        try {
-            mAdView = (AdView) findViewById(R.id.adView);
-            AdRequest.Builder adRequest = new AdRequest.Builder();
-            adRequest.addTestDevice("E0672EF9205508F55913C27654ED0CE9");
-            mAdView.loadAd(adRequest.build());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    protected void setupAds() {
+//
+//        /* SECTION: ADS */
+//        try {
+//            mAdView = (AdView) findViewById(R.id.adView);
+//            AdRequest.Builder adRequest = new AdRequest.Builder();
+//            adRequest.addTestDevice("E0672EF9205508F55913C27654ED0CE9");
+//            mAdView.loadAd(adRequest.build());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public void showAboutDialog() {
         /*
