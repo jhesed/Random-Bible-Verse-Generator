@@ -20,7 +20,7 @@ public class BaseRandomBibleVerse extends AppCompatActivity {
      */
 
     /* SECTION: Variable Declarations */
-    private AdView mAdView;
+//    private AdView mAdView;
     private Menu menu;
 
 //    protected void setupAds() {
@@ -109,27 +109,27 @@ public class BaseRandomBibleVerse extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onPause() {
-        if (mAdView != null) {
-            mAdView.pause();
-        }
-        super.onPause();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (mAdView != null) {
-            mAdView.resume();
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        if (mAdView != null) {
-            mAdView.destroy();
-        }
-        super.onDestroy();
-    }
+//    @Override
+//    public void onPause() {
+//        if (mAdView != null) {
+//            mAdView.pause();
+//        }
+//        super.onPause();
+//    }
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        if (mAdView != null) {
+//            mAdView.resume();
+//        }
+//    }
+//
+//    @Override
+//    public void onDestroy() {
+//        if (mAdView != null) {
+//            mAdView.destroy();
+//        }
+//        super.onDestroy();
+//    }
 }
